@@ -1,0 +1,123 @@
+---
+# The chip's hardware in one file: package, pins, the driver hook of each pin, the blocks inside and the reference
+# circuits. `kokeb-docs figures` draws the pinout, the package outline, the block diagram and the circuits from it,
+# `kokeb-docs gen` writes the chip card of the README and the tables of docs/hardware.md,
+# `kokeb-docs hardware --check` validates it and `kokeb-docs hardware --kicad-netlist OUT --circuit ID` exports a
+# circuit for a schematic or PCB tool. Schema: docs/chip-diagrams.md in kokeb-labs/ci-tools.
+#
+# Every fact cites the datasheet (document `ds` in docs/datasheets.yml) by section and printed page; anything the
+# datasheet does not state carries `unverified`. The figures show the SOT-23-3 package, the one every device exists
+# in; the SC70-5 and TO-92 pin maps are under `variants`.
+schema: 1
+chip: MCP9700
+
+refs:
+  pinout: {doc: ds, section: "Package Types", page: 2}
+  pin_table: {doc: ds, section: "3.0 Pin Descriptions, Table 3-1", page: 9}
+  supply: {doc: ds, section: "DC Electrical Characteristics", page: 3}
+  output: {doc: ds, section: "3.2 Output Voltage Pin (VOUT)", page: 9}
+  transfer: {doc: ds, section: "4.0 Applications Information, Equation 4-1", page: 10}
+  shutdown: {doc: ds, section: "4.2 Shutdown Using Microcontroller I/O Pin", page: 11}
+  layout: {doc: ds, section: "4.3 Layout Considerations", page: 11}
+  outline: {doc: ds, section: "5.0 Packaging Information, SOT-23-3 (TT) dimension table", page: 17}
+  outline_sc70: {doc: ds, section: "5.0 Packaging Information, SC70-5 (LT) dimension table", page: 14}
+  outline_to92: {doc: ds, section: "5.0 Packaging Information, TO-92-3 (TO) dimension table", page: 20}
+  order: {doc: ds, section: "Product Identification System", page: 23}
+  app: {doc: ds, section: "4.0 Applications Information, Figure 4-1 Typical Application Circuit", page: 10}
+
+package:
+  type: SOT-23-3
+  pins: 3
+  # Top view (Package Types, p.2): GND on the top edge, VDD bottom left, VOUT bottom right.
+  layout: quad
+  sides: {bottom: [1, 2], top: [3]}
+  ref: pinout
+  # The body of the SOT-23-3 drawing. The height is the maximum (A max 1.12 mm, 0.89 mm minimum). The pitch (0.95 mm
+  # BSC) is left out of the figure: the dimension label of a two-pad side collides with the width label.
+  outline: {length_mm: 2.9, width_mm: 1.3, height_mm: 1.12, ref: outline}
+  # The other two packages the chip is sold in (ordering information, p.23).
+  variants:
+    - {id: sc70, type: SC70-5, pins: 5, size: "2.00 x 1.25 x 1.10 mm (maximum height)", ordering: "LT",
+       note: "VDD 4, VOUT 3, GND 2, pins 1 and 5 not connected; pitch 0.65 mm; every device", ref: outline_sc70}
+    - {id: to92, type: TO-92-3, pins: 3, size: "4.45 to 5.21 x 4.32 to 5.33 mm body",
+       ordering: "TO", note: "0.175 to 0.205 x 0.170 to 0.210 in; VDD 1, VOUT 2, GND 3 from the bottom view; pitch
+         1.27 mm; not the MCP9700B",
+       ref: outline_to92}
+
+# The supply range of each rail (the README's chip card shows it).
+supply:
+  - {name: "VDD (MCP9700, MCP9700A, MCP9700B)", min_v: 2.3, max_v: 5.5, ref: supply}
+  - {name: "VDD (MCP9701, MCP9701A)", min_v: 3.1, max_v: 5.5, ref: supply}
+
+# The port hooks a pin can map to (the names the driver's port headers declare).
+hooks:
+  - {id: adc, call: "ReadVoltageMv()", kind: other, source: inc/mcp9700_adc_interface.hpp, symbol: ReadVoltageMv}
+  - {id: enable, call: "GpioSet(CtrlPin::Enable)", kind: gpio-out, source: inc/mcp9700.hpp, symbol: GpioSet}
+
+pins:
+  - {number: 1, name: VDD, type: power, domain: VDD,
+     function: "Supply, 2.3 V to 5.5 V (3.1 V to 5.5 V for the MCP9701 and MCP9701A); may be driven from an MCU pin
+       through 200 ohm (optional hook)",
+     hook: enable, ref: pin_table}
+  - {number: 2, name: VOUT, type: analog, domain: VDD,
+     function: "Output voltage, 10.0 mV/C and 500 mV at 0 C (MCP9701: 19.5 mV/C and 400 mV); 100 uA at most",
+     hook: adc, ref: output}
+  - {number: 3, name: GND, type: ground, domain: GND, function: Ground, ref: pin_table}
+
+block_diagram:
+  ref: transfer
+  blocks:
+    - {id: diode, label: Sensing diode, detail: "die temperature", at: [0, 0], tone: amber,
+       unverified: "the datasheet has no block diagram; the blocks follow the description in section 4.0"}
+    - {id: scale, label: Scaling and output buffer, detail: "V = V0 + TC x T; 1000 pF, 100 uA", at: [1, 0], tone: teal,
+       pins: [VOUT], side: right,
+       unverified: "the datasheet has no block diagram; the blocks follow the description in section 4.0"}
+    - {id: supply, label: Supply, detail: "2.3 V to 5.5 V", at: [0, 1], tone: slate, pins: [VDD, GND],
+       unverified: "the datasheet has no block diagram; the blocks follow the description in section 4.0"}
+  links:
+    - {from: diode, to: scale, label: diode voltage}
+    - {from: supply, to: scale, label: power}
+
+circuits:
+  - id: typical
+    title: Typical application
+    description: >-
+      The sensor on an MCU's ADC input with a 100 nF capacitor between VDD and GND. The driver reads the VOUT pin
+      through ReadVoltageMv().
+    ref: app
+    parts:
+      - {id: U1, kind: chip}
+      - id: U2
+        kind: mcu
+        label: MCU
+        pins:
+          - {name: ADC, label: ADC input}
+          - VDD
+          - GND
+      - {id: C1, kind: capacitor, value: 100 nF, ref: layout}
+    nets:
+      - {name: "+3V3", kind: supply, nodes: [U1.VDD, C1.1, U2.VDD]}
+      - {name: GND, kind: ground, nodes: [U1.GND, C1.2, U2.GND]}
+      - {name: VOUT, nodes: [U1.VOUT, U2.ADC]}
+  - id: gpio-powered
+    title: Powered from an I/O pin
+    description: >-
+      The sensor's supply comes from an MCU pin through 200 ohm with 1 uF at VDD, so the driver can switch the
+      sensor off with GpioSet(CtrlPin::Enable). The values are the datasheet's advice for a noisy supply.
+    ref: shutdown
+    parts:
+      - {id: U1, kind: chip}
+      - id: U2
+        kind: mcu
+        label: MCU
+        pins:
+          - {name: ADC, label: ADC input}
+          - {name: EN, label: GPIO (enable)}
+          - GND
+      - {id: R1, kind: resistor, value: 200 Ω, ref: shutdown}
+      - {id: C1, kind: capacitor, value: 1 µF, ref: layout}
+    nets:
+      - {name: SUPPLY, nodes: [U2.EN, R1.1]}
+      - {name: VDD, nodes: [R1.2, U1.VDD, C1.1]}
+      - {name: GND, kind: ground, nodes: [U1.GND, C1.2, U2.GND]}
+      - {name: VOUT, nodes: [U1.VOUT, U2.ADC]}
