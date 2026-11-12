@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="553" viewBox="0 0 1200 553" role="img" aria-labelledby="chip-blocks-title chip-blocks-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-blocks-title">Inside the MCP9700</title>
+<desc id="chip-blocks-desc">Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach each block.</desc>
+<defs><marker id="fk-arrow-rail" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6C7889"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="552" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">Inside the MCP9700</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">Function blocks and their links, from the datasheet's block diagram (4.0 Applications Information, Equation 4-1, p. 10). Pins on the edge carry their</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">package number.</text>
+<rect x="32" y="141.6" width="1136" height="1" fill="#252F3C"/>
+<rect x="112" y="159.6" width="968" height="288" rx="14" fill="#1B232E" stroke="#3A4656" stroke-width="1.2"/>
+<path d="M119 367.6 L152 367.6" fill="none" stroke="#FB7185" stroke-width="1.8"/>
+<path d="M119 391.6 L152 391.6" fill="none" stroke="#94A3B8" stroke-width="1.8"/>
+<path d="M1073 255.6 L1040 255.6" fill="none" stroke="#F0ABFC" stroke-width="1.8"/>
+<path d="M532 255.6 L660 255.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M532 375.6 L640 375.6 Q648 375.6 648 367.6 L648 285.6 Q648 279.6 654 279.6 L660 279.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<rect x="152" y="223.6" width="376" height="72" rx="10" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="152" y="231.6" width="4" height="56" rx="2" fill="#FBBF24"/>
+<rect x="664" y="223.6" width="376" height="72" rx="10" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="664" y="231.6" width="4" height="56" rx="2" fill="#2BB3A3"/>
+<rect x="152" y="343.6" width="376" height="72" rx="10" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="152" y="351.6" width="4" height="56" rx="2" fill="#94A3B8"/>
+<rect x="105" y="360.6" width="14" height="14" rx="3" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="105" y="384.6" width="14" height="14" rx="3" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="1073" y="248.6" width="14" height="14" rx="3" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<text x="128" y="184.6" font-size="13" font-weight="700" fill="#E2E8F0">MCP9700</text>
+<text x="207.5" y="184.6" font-size="12" fill="#E2E8F0">SOT-23-3</text>
+<text x="172" y="250.3" font-size="15" font-weight="700" fill="#FDE68A">Sensing diode*</text>
+<text x="172" y="275.1" font-size="13" fill="#D2DAE4">die temperature</text>
+<text x="684" y="250.3" font-size="15" font-weight="700" fill="#A7F3E6">Scaling and output buffer*</text>
+<text x="684" y="275.1" font-size="13" fill="#D2DAE4">V = V0 + TC x T; 1000 pF, 100 uA</text>
+<text x="172" y="370.3" font-size="15" font-weight="700" fill="#E2E8F0">Supply*</text>
+<text x="172" y="395.1" font-size="13" fill="#D2DAE4">2.3 V to 5.5 V</text>
+<text x="98" y="372.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">VDD  1</text>
+<text x="98" y="396.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">GND  3</text>
+<text x="1094" y="260.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VOUT  2</text>
+<circle cx="152" cy="367.6" r="3" fill="#FB7185"/>
+<circle cx="152" cy="391.6" r="3" fill="#94A3B8"/>
+<circle cx="1040" cy="255.6" r="3" fill="#F0ABFC"/>
+<rect x="548.7" y="245.6" width="94.6" height="20" rx="10" fill="#0E131A"/>
+<text x="596" y="259.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">diode voltage</text>
+<rect x="564.8" y="365.6" width="50.5" height="20" rx="10" fill="#0E131A"/>
+<text x="590" y="379.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">power</text>
+<text x="32" y="469.6" font-size="12.5" fill="#9AA6B5">* Not confirmed in the datasheet: Sensing diode: the datasheet has no block diagram; the blocks follow the description in section 4.0; Scaling and output buffer: the datasheet has</text>
+<text x="32" y="487.6" font-size="12.5" fill="#9AA6B5">no block diagram; the blocks follow the description in section 4.0; Supply: the datasheet has no block diagram; the blocks follow the description in section 4.0.</text>
+<rect x="32" y="506.7" width="14" height="14" rx="4" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="54" y="518.3" font-size="12.5" fill="#9AA6B5">power</text>
+<rect x="117.6" y="506.7" width="14" height="14" rx="4" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="139.6" y="518.3" font-size="12.5" fill="#9AA6B5">ground</text>
+<rect x="208.5" y="506.7" width="14" height="14" rx="4" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<text x="230.5" y="518.3" font-size="12.5" fill="#9AA6B5">analog</text>
+<path d="M296.4 512.9L326.4 512.9" fill="none" stroke="#6C7889" stroke-width="1.6" marker-end="url(#fk-arrow-rail)"/>
+<text x="340.4" y="518.3" font-size="12.5" fill="#9AA6B5">signal or data between blocks</text>
+</svg>

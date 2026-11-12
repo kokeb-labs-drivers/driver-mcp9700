@@ -1,0 +1,51 @@
+{
+  "steps": [
+    [
+      "Discard",
+      "discard_conversions dummy conversions, default 1",
+      "Bus",
+      "slate"
+    ],
+    [
+      "Convert",
+      "samples conversions, default 8, sample_interval_us apart, no wait after the last",
+      "Bus",
+      "blue"
+    ],
+    [
+      "Clip check",
+      "largest conversion + one ADC step >= adc_full_scale_mv",
+      "Saturated",
+      "amber"
+    ],
+    [
+      "Noise check",
+      "largest - smallest (at VOUT) > max_spread_mv",
+      "Unstable",
+      "amber"
+    ],
+    [
+      "Scale",
+      "mean x divider_num / divider_den = output_mv, then V0 and TC of the variant row",
+      "",
+      "teal"
+    ],
+    [
+      "Window check",
+      "below min - range_margin_mc, or above max + range_margin_mc",
+      "OutputLow / OutputHigh",
+      "amber"
+    ],
+    [
+      "Calibrate",
+      "add offset_cal_mc after the window check",
+      "",
+      "brand"
+    ]
+  ],
+  "sources": [
+    "src/mcp9700.ipp:collect()",
+    "src/mcp9700.ipp:Evaluate()",
+    "src/mcp9700.ipp:ReadMeasurement()"
+  ]
+}

@@ -1,0 +1,121 @@
+---
+# The vendor documents this driver was written against (handbook ADR-0019), and where the driver relies on them.
+# Never commit a PDF: `sha256` identifies the exact file that was used, so a reader can confirm they hold the same
+# revision. `pdf` is a stable direct link when the vendor publishes one (page links are built from it, adding
+# `page_offset` when the printed page numbers differ from the PDF's); otherwise readers download from `url`.
+#
+# The README card, docs/datasheet.md and the "Datasheet" box on each page are generated from this file by
+# tools/docs/generators/datasheet.py (`kokeb-docs gen`).
+#
+documents:
+  - id: ds
+    vendor: Microchip Technology Inc.
+    title: MCP970X Low-Power Linear Active Thermistor ICs
+    kind: Datasheet
+    number: DS20001942
+    revision: L
+    date: 2024-02
+    url: https://www.microchip.com/en-us/product/MCP9700
+    pdf: https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf
+    page_offset: 0
+    sha256: 5b0e0efe173d5fdaf72c31e697591b0b1cacbd440ec6ba95d742fd587c7aff33
+
+# One row per thing the driver takes from a document: the datasheet's own section names and printed page
+# numbers, the driver API that implements it, and the docs pages that explain it (file names in docs/).
+topics:
+  - topic: "Pins and packages"
+    doc: ds
+    section: "Package Types; 3.0 Pin Descriptions, Table 3-1"
+    page: 2
+    driver: "`CtrlPin::Enable`, `kPackageSot23`, `kPackageSc70`, `kPackageTo92`"
+    docs: [hardware, quickstart]
+  - topic: "Absolute maximum ratings"
+    doc: ds
+    section: "1.0 Electrical Characteristics"
+    page: 3
+    driver: "`kMaxOutputCurrentUa`, `kMaxLoadCapacitancePf` (documented limits only: no register)"
+    docs: [hardware, porting]
+  - topic: "Supply range and current"
+    doc: ds
+    section: "DC Electrical Characteristics"
+    page: 3
+    driver: "`VariantSpec::vdd_min_mv`, `VariantSpec::vdd_max_mv`, `kVariantTable`"
+    docs: [hardware, configuration]
+  - topic: "The five devices and the packages each comes in"
+    doc: ds
+    section: "Product Identification System; 5.1 Package Marking"
+    page: 23
+    driver: "`Variant`, `VariantSpec::packages`, `VariantSpec::high_packages`"
+    docs: [hardware, index, configuration]
+  - topic: "Accuracy of each device"
+    doc: ds
+    section: "DC Electrical Characteristics, Sensor Accuracy"
+    page: 3
+    driver: "`AccuracyLimitsFor()`, `AccuracyBand`"
+    docs: [configuration, transfer-function, limitations]
+  - topic: "Transfer function: V0 and TC of each device"
+    doc: ds
+    section: "4.0 Applications Information, Equation 4-1; DC Electrical Characteristics"
+    page: 10
+    driver: "`OutputMvToMilliC()`, `MilliCToOutputMv()`, `ToCelsius()`, `Variant`"
+    docs: [transfer-function, configuration]
+  - topic: "Output voltage range and an output outside it"
+    doc: ds
+    section: "3.2 Output Voltage Pin (VOUT)"
+    page: 9
+    driver: "`Error::OutputLow`, `Error::OutputHigh`, `Config::range_margin_mc`"
+    docs: [hardware, troubleshooting, contract, architecture]
+  - topic: "Output current, impedance and load capacitance"
+    doc: ds
+    section: "DC Electrical Characteristics (I_OUT, Z_OUT, C_LOAD)"
+    page: 4
+    driver: "`kMaxOutputCurrentUa`, `kOutputImpedanceOhm`, `kMaxLoadCapacitancePf`"
+    docs: [porting, hardware]
+  - topic: "Turn-on time"
+    doc: ds
+    section: "DC Electrical Characteristics (t_ON)"
+    page: 4
+    driver: "`Config::power_on_settle_us`, `kPowerOnTypicalUs`"
+    docs: [hardware, configuration]
+  - topic: "Specified temperature ranges"
+    doc: ds
+    section: "Temperature Characteristics"
+    page: 4
+    driver: "`TemperatureClass`, `VariantSpec::min_mc`, `VariantSpec::max_ext_mc`, `VariantSpec::max_high_mc`"
+    docs: [configuration, hardware]
+  - topic: "Thermal response"
+    doc: ds
+    section: "DC Electrical Characteristics (t_RES)"
+    page: 4
+    driver: "`Config::samples`, `Config::sample_interval_us`, `kMaxAveragingWindowUs`"
+    docs: [configuration, limitations]
+  - topic: "Improving accuracy: a one-point calibration"
+    doc: ds
+    section: "4.1 Improving Accuracy"
+    page: 10
+    driver: "`Config::offset_cal_mc`"
+    docs: [configuration]
+  - topic: "Shutdown from an I/O pin"
+    doc: ds
+    section: "4.2 Shutdown Using Microcontroller I/O Pin"
+    page: 11
+    driver: "`CtrlPin::Enable`, `Sleep()`, `EnsureInitialized()`"
+    docs: [porting, hardware, api-guide]
+  - topic: "Layout and decoupling"
+    doc: ds
+    section: "4.3 Layout Considerations"
+    page: 11
+    driver: "`docs/hardware.yml` circuits"
+    docs: [hardware]
+  - topic: "Thermal considerations and self-heating"
+    doc: ds
+    section: "4.4 Thermal Considerations"
+    page: 11
+    driver: "documented limit only (no register)"
+    docs: [hardware, limitations]
+  - topic: "Packaging drawings and ordering codes"
+    doc: ds
+    section: "5.0 Packaging Information; Product Identification System"
+    page: 13
+    driver: "`docs/hardware.yml` package, variants"
+    docs: [hardware]

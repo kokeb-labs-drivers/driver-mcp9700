@@ -1,0 +1,97 @@
+# Kconfig for the MCP970x driver (analog output). The root CMakeLists.txt registers it with ESP-IDF
+# (idf_component_register(... KCONFIG _config/Kconfig)). The values reach the code only
+# through inc/mcp9700_kconfig.hpp.
+menuconfig MCP9700
+    bool "MCP970x analog temperature sensor"
+    default y
+    help
+      Defaults for mcp9700::KconfigDefaults(). Outside ESP-IDF they come from Config{}.
+
+if MCP9700
+
+config MCP9700_ADC_CHANNEL
+    int "ADC channel of the sensor output"
+    range 0 15
+    default 0
+
+choice MCP9700_VARIANT
+    prompt "Sensor"
+    default MCP9700_VARIANT_MCP9700
+    help
+      The part on the board (DS20001942L), or CUSTOM for another first-order linear sensor.
+
+config MCP9700_VARIANT_MCP9700
+    bool "MCP9700"
+config MCP9700_VARIANT_MCP9700A
+    bool "MCP9700A"
+config MCP9700_VARIANT_MCP9700B
+    bool "MCP9700B"
+config MCP9700_VARIANT_MCP9701
+    bool "MCP9701"
+config MCP9700_VARIANT_MCP9701A
+    bool "MCP9701A"
+config MCP9700_VARIANT_CUSTOM
+    bool "Custom (declare every coefficient below)"
+
+endchoice
+
+config MCP9700_HIGH_TEMPERATURE
+    bool "High temperature option (to +150 C; MCP9700 and MCP9700B only)"
+    default n
+    depends on MCP9700_VARIANT_MCP9700 || MCP9700_VARIANT_MCP9700B
+
+if MCP9700_VARIANT_CUSTOM
+
+config MCP9700_CUSTOM_V0_MV
+    int "Output at 0 C, mV"
+    range 0 5000
+    default 0
+
+config MCP9700_CUSTOM_TC_UV_PER_C
+    int "Slope, microvolts per C"
+    range 0 100000
+    default 0
+
+config MCP9700_CUSTOM_MIN_MC
+    int "Lowest specified temperature, milli-C"
+    range -200000 200000
+    default 0
+
+config MCP9700_CUSTOM_MAX_MC
+    int "Highest specified temperature, milli-C"
+    range -200000 200000
+    default 0
+
+config MCP9700_CUSTOM_ACCURACY_MIN_MC
+    int "Worst-case error, lower limit, milli-C"
+    range -20000 0
+    default 0
+
+config MCP9700_CUSTOM_ACCURACY_MAX_MC
+    int "Worst-case error, upper limit, milli-C"
+    range 0 20000
+    default 0
+
+endif
+
+config MCP9700_ADC_FULL_SCALE_MV
+    int "Largest voltage the ADC port reports, mV"
+    range 100 10000
+    default 3300
+
+config MCP9700_SAMPLES
+    int "Conversions averaged per reading"
+    range 1 64
+    default 8
+
+config MCP9700_SAMPLE_INTERVAL_US
+    int "Wait between conversions, us"
+    range 0 100000
+    default 100
+
+config MCP9700_OFFSET_CAL_MC
+    int "One-point calibration offset, milli-C"
+    range -20000 20000
+    default 0
+
+endif

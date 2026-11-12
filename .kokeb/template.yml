@@ -1,0 +1,21 @@
+---
+# How this repository was made from kokeb-labs/driver-template. The template's drift check
+# (tools/scaffold.py --check-drift, CI: kokeb-labs/ci-tools ru-template-drift) scaffolds the template again
+# with these arguments and compares the files it manages. List a file under `local` only when it differs on
+# purpose, with the reason.
+template: 09edbd7e6b30443a17668cab001e86f3640678b5
+kind: "driver"
+name: "mcp9700"
+bus: "adc"
+namespace: "mcp9700"
+description: >-
+  C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature
+  sensors, read through your ADC, with clip, noise and range checks.
+include_root: null
+org: "kokeb-labs-drivers"
+repo: "driver-mcp9700"
+author: "The driver-mcp9700 authors"
+license: "MIT"
+datasheet: "https://www.microchip.com/en-us/product/MCP9700"
+platforms: [host, esp32]
+local: []

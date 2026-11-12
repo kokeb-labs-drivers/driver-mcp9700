@@ -1,0 +1,24 @@
+{
+  "name": "mcp9700",
+  "cls": "MCP9700",
+  "calls": [
+    "EnsureInitialized",
+    "Deinitialize",
+    "Sleep",
+    "ReadMeasurement",
+    "ReadTemperatureMilliC",
+    "ReadOutputMv",
+    "ReadRawPortMv",
+    "GetSpec"
+  ],
+  "sources": [
+    "inc/mcp9700.hpp:public calls",
+    "inc/mcp9700_adc_interface.hpp:AdcInterface"
+  ],
+  "bus": "ADC",
+  "base": "AdcInterface",
+  "hooks": [
+    "EnsureInitialized",
+    "ReadVoltageMv"
+  ]
+}

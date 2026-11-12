@@ -1,0 +1,41 @@
+{
+  "lines": [
+    {
+      "name": "MCP9700, 9700A, 9700B",
+      "tone": "teal",
+      "v0_mv": 500,
+      "tc_uv": 10000,
+      "min_mc": -40000,
+      "max_mc": 125000,
+      "high_mc": 150000,
+      "has_high": true
+    },
+    {
+      "name": "MCP9701, 9701A",
+      "tone": "brand",
+      "v0_mv": 400,
+      "tc_uv": 19500,
+      "min_mc": -10000,
+      "max_mc": 125000,
+      "high_mc": 125000,
+      "has_high": false
+    },
+    {
+      "name": "Custom example",
+      "tone": "violet",
+      "v0_mv": 750,
+      "tc_uv": 10000,
+      "min_mc": -40000,
+      "max_mc": 125000,
+      "high_mc": 125000,
+      "has_high": false,
+      "dashed": true
+    }
+  ],
+  "margin_mc": 8000,
+  "sources": [
+    "inc/mcp9700_types.hpp:kVariantTable",
+    "inc/mcp9700_types.hpp:range_margin_mc",
+    "tests/docs/configuration.cpp:custom-offset"
+  ]
+}

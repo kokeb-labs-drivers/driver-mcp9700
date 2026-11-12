@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="954" height="1062" viewBox="0 0 954 1062" role="img" aria-labelledby="chip-pinout-title chip-pinout-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-pinout-title">MCP9700 pinout, SOT-23-3</title>
+<desc id="chip-pinout-desc">Pinout of the MCP9700 in SOT-23-3, top view: 3 pins, each with its name, its electrical type as a colour and the driver hook that uses it.</desc>
+<rect x="0.5" y="0.5" width="953" height="1061" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">MCP9700 pinout, SOT-23-3</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">Top view, pin 1 marked. Colour is the pin's electrical type; the mono text outside is the port hook the driver uses for it.</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">Datasheet: Package Types, p. 2.</text>
+<rect x="32" y="141.6" width="890" height="1" fill="#252F3C"/>
+<rect x="347" y="450.3" width="260" height="260" rx="8" fill="#18202B" stroke="#D2DAE4" stroke-width="2"/>
+<circle cx="367" cy="470.3" r="6" fill="#D2DAE4"/>
+<rect x="450" y="710.3" width="20" height="30" rx="3" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="484" y="710.3" width="20" height="30" rx="3" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<rect x="467" y="420.3" width="20" height="30" rx="3" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="477" y="570.3" font-size="20" font-weight="700" text-anchor="middle" fill="#E8EDF3">MCP9700</text>
+<text x="477" y="594.3" font-size="13" text-anchor="middle" fill="#9AA6B5">SOT-23-3, top view</text>
+<text x="464.1" y="725.3" font-size="11.5" font-weight="700" text-anchor="middle" transform="rotate(-90 464.1 725.3)" fill="#FECDD3">1</text>
+<text x="465" y="750.3" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" transform="rotate(-90 465 750.3)" fill="#E8EDF3">VDD</text>
+<text x="464.3" y="804" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" transform="rotate(-90 464.3 804)" fill="#9AA6B5">GpioSet(CtrlPin::Enable)</text>
+<text x="498.1" y="725.3" font-size="11.5" font-weight="700" text-anchor="middle" transform="rotate(-90 498.1 725.3)" fill="#F5D0FE">2</text>
+<text x="499" y="750.3" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" transform="rotate(-90 499 750.3)" fill="#E8EDF3">VOUT</text>
+<text x="498.3" y="804" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" transform="rotate(-90 498.3 804)" fill="#9AA6B5">ReadVoltageMv()</text>
+<text x="481.1" y="435.3" font-size="11.5" font-weight="700" text-anchor="middle" transform="rotate(-90 481.1 435.3)" fill="#E2E8F0">3</text>
+<text x="482" y="410.3" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" transform="rotate(-90 482 410.3)" fill="#E8EDF3">GND</text>
+<rect x="32" y="1016.5" width="14" height="14" rx="4" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="54" y="1028.1" font-size="12.5" fill="#9AA6B5">power</text>
+<rect x="117.6" y="1016.5" width="14" height="14" rx="4" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="139.6" y="1028.1" font-size="12.5" fill="#9AA6B5">ground</text>
+<rect x="208.5" y="1016.5" width="14" height="14" rx="4" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<text x="230.5" y="1028.1" font-size="12.5" fill="#9AA6B5">analog</text>
+</svg>
