@@ -1367,7 +1367,7 @@ calls it before any I/O.</p>
 </table>
 <p>The reading span <code>(discard + samples - 1) x sample_interval_us</code> may not exceed one second (<code>kMaxAveragingWindowUs</code>):
 the sensor itself takes 1.3 s to reach 63 % of a step (t<sub>RES</sub>, p. 4), so an average over more than that is
-staler than the sensor. Every limit is a named constant in <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_types.hpp"><code>mcp9700_types.hpp</code></a>, and
+staler than the sensor. Every limit is a named constant in <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_types.hpp"><code>mcp9700_types.hpp</code></a>, and
 <code>Validate()</code> is tested one step inside and one step outside each.</p>
 <h2 id="the-variant-table">The variant table<a class="headerlink" href="#the-variant-table" title="Permanent link">&para;</a></h2>
 <p>The five devices are rows of <code>mcp9700::kVariantTable</code>: V0, TC, the specified range (and the High range), the supply,
@@ -1596,7 +1596,7 @@ is an additive change; open an issue.</p>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>Outside ESP-IDF the function returns <code>Config{}</code>. Every value reaches the code only through
-<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_kconfig.hpp"><code>mcp9700_kconfig.hpp</code></a>.</p>
+<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_kconfig.hpp"><code>mcp9700_kconfig.hpp</code></a>.</p>
 <table>
 <thead>
 <tr>
@@ -1649,7 +1649,7 @@ is an additive change; open an issue.</p>
 </tbody>
 </table>
 <p>The resolution is not a menu item: it belongs to your port, so set <code>adc_resolution_bits</code> in code next to the port's
-full scale, as <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/esp32/README.md"><code>examples/esp32</code></a> does.</p>
+full scale, as <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/esp32/README.md"><code>examples/esp32</code></a> does.</p>
 
 
 

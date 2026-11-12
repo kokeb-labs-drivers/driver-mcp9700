@@ -1185,7 +1185,7 @@ the driver does everything else.</p>
 <!-- /generated -->
 
 <p>The driver calls hooks on a class you derive from <code>mcp9700::AdcInterface&lt;Self&gt;</code> (in
-<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>). The base declares no hook; the driver template
+<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>). The base declares no hook; the driver template
 is constrained by the <code>mcp9700::AdcPort</code> concept, so a missing or misdeclared hook is a compile error.</p>
 <h2 id="what-you-implement">What you implement<a class="headerlink" href="#what-you-implement" title="Permanent link">&para;</a></h2>
 <table>
@@ -1367,11 +1367,11 @@ the driver gains <code>Sleep()</code>, and a failed start-up switches the sensor
 <tbody>
 <tr>
 <td>ESP-IDF: <code>adc_oneshot</code> with curve-fitting calibration, an optional enable GPIO, <code>esp_rom_delay_us</code></td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/esp32/main/esp32_mcp9700_port.hpp"><code>esp32_mcp9700_port.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/esp32/main/esp32_mcp9700_port.hpp"><code>esp32_mcp9700_port.hpp</code></a></td>
 </tr>
 <tr>
 <td>Host: the simulated sensor and ADC</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/host/host_mcp9700_port.hpp"><code>host_mcp9700_port.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/host/host_mcp9700_port.hpp"><code>host_mcp9700_port.hpp</code></a></td>
 </tr>
 </tbody>
 </table>

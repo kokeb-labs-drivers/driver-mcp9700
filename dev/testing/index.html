@@ -1115,11 +1115,11 @@ static analysis and measured quality gates, on every pull request. Nothing here 
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ctest<span class="w"> </span>--test-dir<span class="w"> </span>build<span class="w"> </span>--output-on-failure
 </span></code></pre></div>
-<p>The tests are written from the datasheet, not from the driver. <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/mock_mcp9700.hpp"><code>tests/mock_mcp9700.hpp</code></a>
+<p>The tests are written from the datasheet, not from the driver. <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/mock_mcp9700.hpp"><code>tests/mock_mcp9700.hpp</code></a>
 is a model of the sensor and the ADC in floating point with its own copy of the datasheet rows: the sensor (V0, TC,
 accuracy offset, nonlinearity, line regulation, turn-on time, an unpowered level), the ADC (full scale, resolution,
 offset and gain error, noise, clipping, channel-switch crosstalk, an external divider) and the faults (stuck low,
-floating, spikes, a failing conversion). <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/reference_mcp9700.hpp"><code>tests/reference_mcp9700.hpp</code></a> is a second,
+floating, spikes, a failing conversion). <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/reference_mcp9700.hpp"><code>tests/reference_mcp9700.hpp</code></a> is a second,
 plain implementation of the driver's rules in 128-bit rational arithmetic; the differential tests and the fuzzer
 compare the driver with it.</p>
 <table>
@@ -1131,75 +1131,75 @@ compare the driver with it.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_variant_table.cpp"><code>test_variant_table.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_variant_table.cpp"><code>test_variant_table.cpp</code></a></td>
 <td>The table against the test's own copy of the datasheet, its invariants, the <code>Custom</code> rules at every boundary</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_conversion.cpp"><code>test_conversion.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_conversion.cpp"><code>test_conversion.cpp</code></a></td>
 <td><code>OutputMvToMilliC()</code> and its inverse at the datasheet reference points, rounding, against the oracle</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_accuracy.cpp"><code>test_accuracy.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_accuracy.cpp"><code>test_accuracy.cpp</code></a></td>
 <td><code>AccuracyLimitsFor()</code> for every band, its edges and errors</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_model.cpp"><code>test_model.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_model.cpp"><code>test_model.cpp</code></a></td>
 <td>End to end over the model: every named variant and synthetic <code>Custom</code> parts, swept across temperature</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_validation.cpp"><code>test_validation.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_validation.cpp"><code>test_validation.cpp</code></a></td>
 <td><code>Validate()</code> one step inside and one outside every bound</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_errors.cpp"><code>test_errors.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_errors.cpp"><code>test_errors.cpp</code></a></td>
 <td>The base <code>Error</code> values; every chip-specific value is returned; the never-returned values stay unreturned</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_lifecycle.cpp"><code>test_lifecycle.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_lifecycle.cpp"><code>test_lifecycle.cpp</code></a></td>
 <td>Construct, start, stop, restart; no traffic before start; the supply pin levels</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_faults.cpp"><code>test_faults.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_faults.cpp"><code>test_faults.cpp</code></a></td>
 <td>Each model fault maps to its error; bus failures; the precedence rule</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_timing.cpp"><code>test_timing.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_timing.cpp"><code>test_timing.cpp</code></a></td>
 <td>The settle wait, the sample intervals and the exact number of conversions</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_calibration.cpp"><code>test_calibration.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_calibration.cpp"><code>test_calibration.cpp</code></a></td>
 <td>The offset is added after the window check</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_boundaries.cpp"><code>test_boundaries.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_boundaries.cpp"><code>test_boundaries.cpp</code></a></td>
 <td>The window edges to the millivolt, the saturation threshold, the spread limit, divider rounding, the <code>Custom</code> limits</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_raw.cpp"><code>test_raw.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_raw.cpp"><code>test_raw.cpp</code></a></td>
 <td>Single-shot raw access and the last-conversion getter</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_kconfig.cpp"><code>test_kconfig.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_kconfig.cpp"><code>test_kconfig.cpp</code></a></td>
 <td><code>KconfigDefaults()</code> without Kconfig and with each variant's menuconfig values</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/test_version.cpp"><code>test_version.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/test_version.cpp"><code>test_version.cpp</code></a></td>
 <td>The version getters follow the generated header</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/fuzz/fuzz_mcp9700.cpp"><code>tests/fuzz/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/fuzz/fuzz_mcp9700.cpp"><code>tests/fuzz/</code></a></td>
 <td>The fuzz target; CTest replays its corpus (<code>mcp9700_fuzz_mcp9700_corpus</code>), see below</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/compile_fail/port_without_delay.cpp"><code>tests/compile_fail/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/compile_fail/port_without_delay.cpp"><code>tests/compile_fail/</code></a></td>
 <td>Ports and configurations that must not compile</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/docs/quickstart.cpp"><code>tests/docs/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/docs/quickstart.cpp"><code>tests/docs/</code></a></td>
 <td>Every code block on this site, compiled</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/check_install.cmake"><code>tests/check_install.cmake</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/check_install.cmake"><code>tests/check_install.cmake</code></a></td>
 <td><code>find_package(mcp9700)</code> from an installed package</td>
 </tr>
 </tbody>
@@ -1208,7 +1208,7 @@ compare the driver with it.</p>
 test too (<code>mcp9700_host_example</code>) and its output is part of the check.</p>
 <h2 id="fuzz-tests">Fuzz tests<a class="headerlink" href="#fuzz-tests" title="Permanent link">&para;</a></h2>
 <p>Everything the driver reads is a voltage from the port's ADC, so the reading is what a floating input, a short or a
-wrong channel controls. <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/fuzz/fuzz_mcp9700.cpp"><code>tests/fuzz/fuzz_mcp9700.cpp</code></a> lets libFuzzer choose a
+wrong channel controls. <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/fuzz/fuzz_mcp9700.cpp"><code>tests/fuzz/fuzz_mcp9700.cpp</code></a> lets libFuzzer choose a
 configuration (sometimes invalid: any variant including <code>Custom</code> with random fields, a named variant with a stray
 <code>custom</code> field, a variant outside the enumeration), then up to 64 driver calls, and on every conversion what the
 ADC does: pass the model's output, fail, or return any 32-bit value. Between calls it can change the temperature,
@@ -1291,7 +1291,7 @@ one breaks:</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>./build-fuzz/tests/fuzz/fuzz_mcp9700<span class="w"> </span>-max_total_time<span class="o">=</span><span class="m">120</span><span class="w"> </span>tests/fuzz/corpus/fuzz_mcp9700
 </span></code></pre></div>
 <p>The same file also builds without libFuzzer as <code>fuzz_replay_fuzz_mcp9700</code>, and CTest replays every input in
-<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/tree/2988decc3071bc800480f4ef6603b66e7eb6a844/tests/fuzz/corpus/fuzz_mcp9700"><code>tests/fuzz/corpus/fuzz_mcp9700/</code></a> on GCC and Clang
+<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/tree/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/tests/fuzz/corpus/fuzz_mcp9700"><code>tests/fuzz/corpus/fuzz_mcp9700/</code></a> on GCC and Clang
 (<code>mcp9700_fuzz_mcp9700_corpus</code>): the seeds (<code>custom-valid</code>, <code>custom-invalid</code>, <code>named-with-custom</code>, <code>not-started</code>,
 <code>init-and-read</code>, <code>bus-faults</code>, <code>config-invalid</code>, <code>stuck-low</code>, <code>float-high</code>, <code>saturated</code>, <code>unstable</code>, <code>power-cycle</code>,
 <code>mcp9701-high-temperature</code>, <code>max-samples-max-divider</code>, <code>raw-extremes</code>) and every input that ever broke a promise (name
@@ -1300,7 +1300,7 @@ keeps between runs (job <code>Host quality / fuzz</code>).</p>
 <h2 id="quality-gates">Quality gates<a class="headerlink" href="#quality-gates" title="Permanent link">&para;</a></h2>
 <p>The <code>Host quality</code> job measures the library code, <code>inc/</code> and <code>src/</code> only (tests and examples are left out), and
 fails when a value is over the limits of this repository's assurance level, <code>high</code> (set in
-<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/.kokeb/handbook.yml"><code>.kokeb/handbook.yml</code></a>, defined by the handbook's ADR-0020):</p>
+<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/.kokeb/handbook.yml"><code>.kokeb/handbook.yml</code></a>, defined by the handbook's ADR-0020):</p>
 <table>
 <thead>
 <tr>
@@ -1368,10 +1368,10 @@ conditions 99 % (209 of 210).</p>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build-san<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ctest<span class="w"> </span>--test-dir<span class="w"> </span>build-san<span class="w"> </span>--output-on-failure
 </span></code></pre></div>
 <p>The fuzz gate runs locally as shown in <a href="#fuzz-tests">Fuzz tests</a>.</p>
-<p>clang-tidy 20 (<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/_config/.clang-tidy"><code>_config/.clang-tidy</code></a>: bugprone, CERT, clang-analyzer,
+<p>clang-tidy 20 (<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/_config/.clang-tidy"><code>_config/.clang-tidy</code></a>: bugprone, CERT, clang-analyzer,
 cppcoreguidelines, modernize, performance, portability and readability, each disabled check with its reason) and
 cppcheck (strict) run in the <code>C++ lint</code> and <code>Repository checks</code> jobs and fail on any finding.</p>
-<p>The <code>MISRA</code> job (<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/.github/workflows/ci-misra.yml"><code>ci-misra.yml</code></a>) runs the shared <code>ru-misra</code> workflow of
+<p>The <code>MISRA</code> job (<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/.github/workflows/ci-misra.yml"><code>ci-misra.yml</code></a>) runs the shared <code>ru-misra</code> workflow of
 ci-tools at level <code>high</code>: it traces a host build and the Cortex-M build (<code>mcp9700_optimised_build</code>) of every
 translation unit, checks them against MISRA C++:2023 and the handbook's C++20 profile (the CodeQL coding-standards
 and profile packs, plus the validated clang-tidy and cppcheck checks), and reports each finding against the
@@ -1380,7 +1380,7 @@ its deviation on the line before it (<code>// codeql::misra_deviation_next_line(
 of <code>inc/mcp9700.hpp</code>). Until the repository is public the job runs with <code>open_source_prerelease: true</code>, the
 declaration that the code is released under the licence in <code>LICENSE</code> and is to be published.</p>
 <h2 id="ci-workflows">CI workflows<a class="headerlink" href="#ci-workflows" title="Permanent link">&para;</a></h2>
-<p>Everything runs from <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/.github/workflows/ci.yml"><code>ci.yml</code></a>, which calls one workflow file per check and ends in
+<p>Everything runs from <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/.github/workflows/ci.yml"><code>ci.yml</code></a>, which calls one workflow file per check and ends in
 the <code>CI gate</code> job, the single required check (<code>CI gate / gate</code>).</p>
 <table>
 <thead>

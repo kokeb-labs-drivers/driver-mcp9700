@@ -1095,15 +1095,15 @@ optional pieces around it, and only <code>examples/&lt;platform&gt;/</code> hold
 <tbody>
 <tr>
 <td>Host (Linux, macOS, Windows)</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/host/host_mcp9700_port.hpp"><code>examples/host/host_mcp9700_port.hpp</code></a> (simulated chip)</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/host/README.md"><code>examples/host/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/host/host_mcp9700_port.hpp"><code>examples/host/host_mcp9700_port.hpp</code></a> (simulated chip)</td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/host/README.md"><code>examples/host/</code></a></td>
 <td>Plain CMake</td>
 <td>yes, run as a test</td>
 </tr>
 <tr>
 <td>ESP32 (ESP-IDF)</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/esp32/main/esp32_mcp9700_port.hpp"><code>examples/esp32/main/esp32_mcp9700_port.hpp</code></a></td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/examples/esp32/README.md"><code>examples/esp32/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/esp32/main/esp32_mcp9700_port.hpp"><code>examples/esp32/main/esp32_mcp9700_port.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/examples/esp32/README.md"><code>examples/esp32/</code></a></td>
 <td>Root <code>CMakeLists.txt</code> under <code>ESP_PLATFORM</code> (component)</td>
 <td>yes</td>
 </tr>
@@ -1122,7 +1122,7 @@ repository as a component (a repository scaffolded without the ESP32 platform ad
 template when it needs it). Zephyr modules, Arduino library manifests and PlatformIO manifests are added only when a
 product needs them, and an example is added only together with a CI job that builds it.</p>
 <h2 id="add-a-platform">Add a platform<a class="headerlink" href="#add-a-platform" title="Permanent link">&para;</a></h2>
-<p>The <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/.claude/skills/add-port/SKILL.md"><code>add-port</code> skill</a> has
+<p>The <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/.claude/skills/add-port/SKILL.md"><code>add-port</code> skill</a> has
 the details per MCU. In short:</p>
 <ol>
 <li>Create <code>examples/&lt;platform&gt;/</code> with the port (<code>&lt;platform&gt;_mcp9700_port.hpp</code>), a small example program and a

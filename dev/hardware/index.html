@@ -1380,7 +1380,7 @@ the outline, the block diagram, the circuits and the tables on this page are dra
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The MCP9700 seen from the top, in its SOT-23-3 package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
 </details>
 <!-- generated: chip-pins -->
 <p>SOT-23-3, 3 pins (Package Types, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=2">p. 2</a>).</p>
@@ -1477,7 +1477,7 @@ the outline, the block diagram, the circuits and the tables on this page are dra
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The MCP9700 package seen from the top and, when the height is known, from the side, drawn to scale: 2.9 x 1.3 x 1.12 mm. The arrows carry the datasheet's dimensions, the dot marks pin 1 and the pads are numbered counter-clockwise from it, coloured by the pin's electrical type (legend below). Pads sit centred on each side, evenly spaced; the datasheet's land pattern is the reference for a board.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
 </details>
 <p>The figure shows the SOT-23-3 body: 2.90 mm long and 1.30 mm wide, at most 1.12 mm high (the maximum, A max; the
 minimum is 0.89 mm), pitch 0.95 mm (drawing C04-104, p. 17). It is the body, not the land pattern: use the
@@ -1531,7 +1531,7 @@ High option is not sold in it either.</p>
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The MCP9700's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
 </details>
 <p>The datasheet has no block diagram. Section 4.0 (p. 10) describes it: an internal diode measures the die
 temperature, and its voltage is scaled to the output. The blocks above follow that description and are marked
@@ -1547,7 +1547,7 @@ pins (section 4.3, p. 11).</p>
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
 </details>
 <h3 id="power-from-an-io-pin">Power from an I/O pin<a class="headerlink" href="#power-from-an-io-pin" title="Permanent link">&para;</a></h3>
 <p>Section 4.2 (p. 11) allows the sensor to be powered from an MCU pin, which lets the driver switch it off
@@ -1562,7 +1562,7 @@ resistor in the <strong>supply</strong> line; never in series with VOUT, which w
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/2988decc3071bc800480f4ef6603b66e7eb6a844/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f435359e4ca126d5cf0f1ba97f84ec7d0b41e571/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
 </details>
 <!-- generated: chip-parts -->
 <p><strong>Typical application</strong> (figure <code>chip-circuit-typical</code>)</p>
