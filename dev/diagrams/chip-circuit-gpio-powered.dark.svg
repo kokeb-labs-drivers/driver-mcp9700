@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="535" viewBox="0 0 760 535" role="img" aria-labelledby="chip-circuit-gpio-powered-title chip-circuit-gpio-powered-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-circuit-gpio-powered-title">MCP9700: Powered from an I/O pin</title>
+<desc id="chip-circuit-gpio-powered-desc">Schematic of the MCP9700 powered from an i/o pin: the chip with U2 MCU, R1 resistor 200 Ω, C1 capacitor 1 µF; the MCU wires carry the port hooks GpioSet(CtrlPin::Enable), ReadVoltageMv().</desc>
+<rect x="0.5" y="0.5" width="759" height="534" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">MCP9700: Powered from an I/O pin</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">The sensor's supply comes from an MCU pin through 200 ohm with 1 uF at VDD, so the</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">driver can switch the sensor off with GpioSet(CtrlPin::Enable). The values are the</text>
+<text x="32" y="147.3" font-size="15" fill="#9AA6B5">datasheet's advice for a noisy supply. Above each MCU wire: the port hook that drives it.</text>
+<text x="32" y="169.1" font-size="15" fill="#9AA6B5">Datasheet: 4.2 Shutdown Using Microcontroller I/O Pin, p. 11.</text>
+<rect x="32" y="185.1" width="696" height="1" fill="#252F3C"/>
+<path d="M528 443.1 L528 459.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M248 291.1 L248 395.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M248 395.1 L448 395.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M416 211.1 L536 211.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M416 211.1 L416 443.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M416 387.1 L528 387.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M416 443.1 L448 443.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M528 387.1 L528 395.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M248 267.1 L424 267.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<rect x="448" y="235.1" width="176" height="80" rx="4" fill="#151C26" stroke="#F4B942" stroke-width="1.8"/>
+<path d="M448 267.1 L424 267.1" fill="none" stroke="#F0ABFC" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M536 235.1 L536 211.1" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M536 315.1 L536 339.1" fill="none" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<rect x="32" y="219.1" width="192" height="104" rx="4" fill="#18202B" stroke="#D2DAE4" stroke-width="1.8"/>
+<path d="M224 267.1 L248 267.1" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M224 291.1 L248 291.1" fill="none" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M200 323.1 L200 347.1" fill="none" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M536 339.1 L536 347.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M528 347.1 L544 347.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M531 350.6 L541 350.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M534 354.1 L538 354.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M200 347.1 L200 355.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M192 355.1 L208 355.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M195 358.6 L205 358.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M198 362.1 L202 362.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M448 395.1 L448 408.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M448 430.1 L448 443.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M443 408.1 L443 430.1 L453 430.1 L453 408.1 Z" fill="#151C26" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M528 395.1 L528 415.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M528 422.6 L528 443.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M518 415.6 L538 415.6" fill="none" stroke="#E8EDF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M518 422.6 L538 422.6" fill="none" stroke="#E8EDF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M528 459.1 L528 467.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M520 467.1 L536 467.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M523 470.6 L533 470.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M526 474.1 L530 474.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="454" y="271.6" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VOUT</text>
+<text x="444" y="263.1" font-size="11" text-anchor="end" fill="#9AA6B5">2</text>
+<text x="536" y="251.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">VDD</text>
+<text x="540" y="229.1" font-size="11" fill="#9AA6B5">1</text>
+<text x="536" y="308.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">GND</text>
+<text x="540" y="329.9" font-size="11" fill="#9AA6B5">3</text>
+<text x="536" y="272.1" font-size="15" font-weight="700" text-anchor="middle" fill="#F8D27A">MCP9700</text>
+<text x="536" y="290.1" font-size="12" text-anchor="middle" fill="#9AA6B5">U1</text>
+<text x="218" y="271.6" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">ADC input</text>
+<text x="218" y="295.6" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">GPIO (enable)</text>
+<text x="200" y="316.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">GND</text>
+<text x="44" y="241.1" font-size="15" font-weight="700" fill="#E8EDF3">MCU</text>
+<text x="44" y="259.1" font-size="12" fill="#9AA6B5">U2</text>
+<text x="256" y="261.1" font-size="12" font-weight="500" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#DDD6FE">ReadVoltageMv()</text>
+<text x="458" y="416.1" font-size="12" font-weight="700" fill="#E8EDF3">R1</text>
+<text x="458" y="430.5" font-size="12" fill="#9AA6B5">200 Ω</text>
+<text x="543" y="416.1" font-size="12" font-weight="700" fill="#E8EDF3">C1</text>
+<text x="543" y="430.5" font-size="12" fill="#9AA6B5">1 µF</text>
+<circle cx="416" cy="387.1" r="3.2" fill="#D2DAE4"/>
+<rect x="32" y="489.4" width="14" height="14" rx="4" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<text x="54" y="501.1" font-size="12.5" fill="#9AA6B5">other hook</text>
+</svg>

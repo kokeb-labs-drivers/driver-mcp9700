@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1039" viewBox="0 0 1200 1039" role="img" aria-labelledby="read-pipeline-title read-pipeline-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="read-pipeline-title">One reading, step by step</title>
+<desc id="read-pipeline-desc">Flow of one reading: discard dummy conversions, convert and average N samples, check for a clipped ADC (Saturated), check the spread (Unstable), scale to VOUT and convert to a temperature, check the window (OutputLow, OutputHigh) and add the calibration offset. A failed conversion is Bus.</desc>
+<defs><marker id="fk-arrow-rail" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6C7889"/></marker><marker id="fk-arrow-rose-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FB7185"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="1038" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#F8D27A">ARCHITECTURE</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#E8EDF3">One reading, step by step</text>
+<text x="32" y="115.4" font-size="18" fill="#9AA6B5">Never a retry and never a clamp: the first check that fails is the error.</text>
+<rect x="32" y="131.4" width="1136" height="1" fill="#252F3C"/>
+<path d="M882 193.9 L918 193.9" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#fk-arrow-rose-strong)"/>
+<path d="M455 242.4 L455 268.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M882 316.9 L918 316.9" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#fk-arrow-rose-strong)"/>
+<path d="M455 365.4 L455 391.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M882 439.9 L918 439.9" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#fk-arrow-rose-strong)"/>
+<path d="M455 488.4 L455 514.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M882 562.9 L918 562.9" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#fk-arrow-rose-strong)"/>
+<path d="M455 611.4 L455 637.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M455 734.4 L455 760.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M882 808.9 L918 808.9" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#fk-arrow-rose-strong)"/>
+<path d="M455 857.4 L455 883.4" fill="none" stroke="#6C7889" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<rect x="32" y="149.4" width="846" height="89" rx="12" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="32" y="157.4" width="4" height="73" rx="2" fill="#94A3B8"/>
+<rect x="32" y="272.4" width="846" height="89" rx="12" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="32" y="280.4" width="4" height="73" rx="2" fill="#60A5FA"/>
+<rect x="32" y="395.4" width="846" height="89" rx="12" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="32" y="403.4" width="4" height="73" rx="2" fill="#FBBF24"/>
+<rect x="32" y="518.4" width="846" height="89" rx="12" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="32" y="526.4" width="4" height="73" rx="2" fill="#FBBF24"/>
+<rect x="32" y="641.4" width="846" height="89" rx="12" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="32" y="649.4" width="4" height="73" rx="2" fill="#2BB3A3"/>
+<rect x="32" y="764.4" width="846" height="89" rx="12" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="32" y="772.4" width="4" height="73" rx="2" fill="#FBBF24"/>
+<rect x="32" y="887.4" width="846" height="89" rx="12" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<rect x="32" y="895.4" width="4" height="73" rx="2" fill="#F4B942"/>
+<text x="56" y="184.4" font-size="20" font-weight="700" fill="#E2E8F0">1. Discard</text>
+<text x="56" y="215" font-size="17" fill="#D2DAE4">discard_conversions dummy conversions, default 1</text>
+<rect x="926" y="180.9" width="47.3" height="26" rx="13" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<text x="934" y="199" font-size="16" font-weight="700" fill="#FECDD3">Bus</text>
+<text x="56" y="307.4" font-size="20" font-weight="700" fill="#BFDBFE">2. Convert</text>
+<text x="56" y="338" font-size="17" fill="#D2DAE4">samples conversions, default 8, sample_interval_us apart, no wait after the last</text>
+<rect x="926" y="303.9" width="47.3" height="26" rx="13" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<text x="934" y="322" font-size="16" font-weight="700" fill="#FECDD3">Bus</text>
+<text x="56" y="430.4" font-size="20" font-weight="700" fill="#FDE68A">3. Clip check</text>
+<text x="56" y="461" font-size="17" fill="#D2DAE4">largest conversion + one ADC step &gt;= adc_full_scale_mv</text>
+<rect x="926" y="426.9" width="97.5" height="26" rx="13" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<text x="934" y="445" font-size="16" font-weight="700" fill="#FECDD3">Saturated</text>
+<text x="56" y="553.4" font-size="20" font-weight="700" fill="#FDE68A">4. Noise check</text>
+<text x="56" y="584" font-size="17" fill="#D2DAE4">largest - smallest (at VOUT) &gt; max_spread_mv</text>
+<rect x="926" y="549.9" width="89.9" height="26" rx="13" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<text x="934" y="568" font-size="16" font-weight="700" fill="#FECDD3">Unstable</text>
+<text x="56" y="676.4" font-size="20" font-weight="700" fill="#A7F3E6">5. Scale</text>
+<text x="56" y="707" font-size="17" fill="#D2DAE4">mean x divider_num / divider_den = output_mv, then V0 and TC of the variant row</text>
+<text x="56" y="799.4" font-size="20" font-weight="700" fill="#FDE68A">6. Window check</text>
+<text x="56" y="830" font-size="17" fill="#D2DAE4">below min - range_margin_mc, or above max + range_margin_mc</text>
+<rect x="926" y="795.9" width="218.2" height="26" rx="13" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<text x="934" y="814" font-size="16" font-weight="700" fill="#FECDD3">OutputLow / OutputHigh</text>
+<text x="56" y="922.4" font-size="20" font-weight="700" fill="#F8D27A">7. Calibrate</text>
+<text x="56" y="953" font-size="17" fill="#D2DAE4">add offset_cal_mc after the window check</text>
+<rect x="32" y="988.8" width="14" height="14" rx="4" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="54" y="1003.4" font-size="16" fill="#9AA6B5">dummy</text>
+<rect x="137.7" y="988.8" width="14" height="14" rx="4" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<text x="159.7" y="1003.4" font-size="16" fill="#9AA6B5">ADC</text>
+<rect x="220" y="988.8" width="14" height="14" rx="4" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<text x="242" y="1003.4" font-size="16" fill="#9AA6B5">check</text>
+<rect x="314.6" y="988.8" width="14" height="14" rx="4" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<text x="336.6" y="1003.4" font-size="16" fill="#9AA6B5">maths</text>
+<rect x="409.5" y="988.8" width="14" height="14" rx="4" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<text x="431.5" y="1003.4" font-size="16" fill="#9AA6B5">result</text>
+</svg>

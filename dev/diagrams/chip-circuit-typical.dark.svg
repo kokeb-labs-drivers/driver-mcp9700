@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="543" viewBox="0 0 760 543" role="img" aria-labelledby="chip-circuit-typical-title chip-circuit-typical-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-circuit-typical-title">MCP9700: Typical application</title>
+<desc id="chip-circuit-typical-desc">Schematic of the MCP9700 typical application: the chip with U2 MCU, C1 capacitor 100 nF; the MCU wires carry the port hooks GpioSet(CtrlPin::Enable), ReadVoltageMv().</desc>
+<rect x="0.5" y="0.5" width="759" height="542" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">MCP9700: Typical application</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">The sensor on an MCU's ADC input with a 100 nF capacitor between VDD and GND. The</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">driver reads the VOUT pin through ReadVoltageMv(). Above each MCU wire: the port hook</text>
+<text x="32" y="147.3" font-size="15" fill="#9AA6B5">that drives it. Datasheet: 4.0 Applications Information, Figure 4-1 Typical Application Circuit,</text>
+<text x="32" y="169.1" font-size="15" fill="#9AA6B5">p. 10.</text>
+<rect x="32" y="185.1" width="696" height="1" fill="#252F3C"/>
+<path d="M464 251.1 L464 339.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M464 275.1 L512 275.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<path d="M216 395.1 L392 395.1" fill="none" stroke="#D2DAE4" stroke-width="1.5"/>
+<rect x="416" y="363.1" width="184" height="80" rx="4" fill="#151C26" stroke="#F4B942" stroke-width="1.8"/>
+<path d="M416 395.1 L392 395.1" fill="none" stroke="#F0ABFC" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M464 363.1 L464 339.1" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M512 443.1 L512 467.1" fill="none" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<rect x="32" y="347.1" width="160" height="80" rx="4" fill="#18202B" stroke="#D2DAE4" stroke-width="1.8"/>
+<path d="M192 395.1 L216 395.1" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M168 347.1 L168 323.1" fill="none" stroke="#FB7185" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M168 427.1 L168 451.1" fill="none" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="butt" stroke-linejoin="round"/>
+<path d="M464 251.1 L464 240.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M455 240.1 L473 240.1" fill="none" stroke="#FB7185" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512 275.1 L512 295.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512 302.6 L512 323.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M502 295.6 L522 295.6" fill="none" stroke="#E8EDF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M502 302.6 L522 302.6" fill="none" stroke="#E8EDF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512 323.1 L512 331.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M504 331.1 L520 331.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M507 334.6 L517 334.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M510 338.1 L514 338.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512 467.1 L512 475.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M504 475.1 L520 475.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M507 478.6 L517 478.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M510 482.1 L514 482.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M168 323.1 L168 312.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M159 312.1 L177 312.1" fill="none" stroke="#FB7185" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M168 451.1 L168 459.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 459.1 L176 459.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M163 462.6 L173 462.6" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M166 466.1 L170 466.1" fill="none" stroke="#E8EDF3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="422" y="399.6" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VOUT</text>
+<text x="412" y="391.1" font-size="11" text-anchor="end" fill="#9AA6B5">2</text>
+<text x="464" y="379.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">VDD</text>
+<text x="468" y="357.1" font-size="11" fill="#9AA6B5">1</text>
+<text x="512" y="436.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">GND</text>
+<text x="516" y="457.9" font-size="11" fill="#9AA6B5">3</text>
+<text x="508" y="400.1" font-size="15" font-weight="700" text-anchor="middle" fill="#F8D27A">MCP9700</text>
+<text x="508" y="418.1" font-size="12" text-anchor="middle" fill="#9AA6B5">U1</text>
+<text x="186" y="399.6" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">ADC input</text>
+<text x="168" y="363.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">VDD</text>
+<text x="168" y="420.1" font-size="12.5" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#E8EDF3">GND</text>
+<text x="44" y="369.1" font-size="15" font-weight="700" fill="#E8EDF3">MCU</text>
+<text x="44" y="387.1" font-size="12" fill="#9AA6B5">U2</text>
+<text x="464" y="234.1" font-size="12" font-weight="700" text-anchor="middle" fill="#FECDD3">+3V3</text>
+<text x="527" y="296.1" font-size="12" font-weight="700" fill="#E8EDF3">C1</text>
+<text x="527" y="310.5" font-size="12" fill="#9AA6B5">100 nF</text>
+<text x="168" y="306.1" font-size="12" font-weight="700" text-anchor="middle" fill="#FECDD3">+3V3</text>
+<text x="224" y="389.1" font-size="12" font-weight="500" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#DDD6FE">ReadVoltageMv()</text>
+<circle cx="464" cy="275.1" r="3.2" fill="#D2DAE4"/>
+<rect x="32" y="497.4" width="14" height="14" rx="4" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<text x="54" y="509.1" font-size="12.5" fill="#9AA6B5">other hook</text>
+</svg>
