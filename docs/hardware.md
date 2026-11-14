@@ -161,7 +161,7 @@ resistor in the **supply** line; never in series with VOUT, which would add an e
 
 | Part | Kind | Value | Connects | Datasheet |
 | --- | --- | --- | --- | --- |
-| U2 | MCU | - | EN: SUPPLY, GND: GND, ADC: VOUT | 4.2, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
+| U2 | MCU | - | ADC: VOUT, EN: SUPPLY, GND: GND | 4.2, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
 | R1 | resistor | 200 Ω | SUPPLY, VDD | 4.2, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
 | C1 | capacitor | 1 µF | VDD, GND | 4.3, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
 

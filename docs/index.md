@@ -9,6 +9,12 @@ hide:
 
 # MCP970x Driver
 
+<!-- generated: chip-summary -->
+The **MCP9700** is an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with
+the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+<!-- /generated -->
+
 <p>A C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors,
 read through any MCU's ADC, with clip, noise and range checks.</p>
 
@@ -17,34 +23,129 @@ read through any MCU's ADC, with clip, noise and range checks.</p>
 [Source on GitHub](https://github.com/kokeb-labs-drivers/driver-mcp9700){ .md-button }
 </div>
 
+<!-- figure: chip-hero -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-hero.dark.svg">
+  <img src="diagrams/chip-hero.svg"
+    alt="Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage
+    rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC
+    input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature.
+    Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C
+    (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High
+    option); ±1 to ±4 °C accuracy, by grade; 6 µA typical supply current.">
+</picture>
+<!-- /figure -->
+
+## What it does
+
+<!-- figure: chip-capabilities -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-capabilities.dark.svg">
+  <img src="diagrams/chip-capabilities.svg"
+    alt="Capability map of the MCP9700: Linear temperature output (supported): Turns the output voltage into
+    milli-degrees with the datasheet's first-order equation, in integers; Five devices (supported): The
+    MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades;
+    Temperature classes (supported): Extended range, or +150 °C on the MCP9700 and MCP9700B High option;
+    a reading outside it is refused; Direct ADC connection (supported): VOUT goes straight to an ADC
+    pin; the driver averages conversions and refuses a clipped or noisy line; One-point calibration
+    (supported): Removes the sensor's offset with one reading at a known temperature, as the datasheet
+    advises; Power from an I/O pin (supported): Switches the sensor's supply from an MCU pin to save
+    current; 800 µs typical turn-on; Nonlinearity compensation (not covered): A look-up table can bring
+    the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result; Self-heating
+    (not covered): 0.179 °C at the worst case at 25 °C; the driver does not correct it.">
+</picture>
+<!-- /figure -->
+
+## Where it is used
+
+<!-- generated: chip-uses -->
+- Automotive
+- Hard disk drives and other PC peripherals
+- Entertainment systems
+- Home appliance
+- Office equipment
+- Battery packs and portable equipment
+- General purpose temperature monitoring
+
+Uses named by the datasheet (Features, [p. 1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+<!-- /generated -->
+
+## Inside the sensor
+
+<!-- figure: chip-blocks -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-blocks.dark.svg">
+  <img src="diagrams/chip-blocks.svg"
+    alt="Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach
+    each block.">
+</picture>
+<!-- /figure -->
+
+## Pins and wiring
+
+<!-- figure: chip-pinout -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-pinout.dark.svg">
+  <img src="diagrams/chip-pinout.svg"
+    alt="Pinout of the MCP9700 in SOT-23-3, top view: 3 pins, each with its name, its electrical type as a
+    colour and the driver hook that uses it.">
+</picture>
+<!-- /figure -->
+
+<!-- figure: chip-wiring-typical -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-wiring-typical.dark.svg">
+  <img src="diagrams/chip-wiring-typical.svg"
+    alt="Wiring of the MCP9700 for the Typical application: MCU ADC input to VOUT (ReadVoltageMv()).
+    Supplies, grounds and the support parts are listed under the drawing.">
+</picture>
+<!-- /figure -->
+
+<!-- figure: chip-wiring-gpio-powered -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-wiring-gpio-powered.dark.svg">
+  <img src="diagrams/chip-wiring-gpio-powered.svg"
+    alt="Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU
+    GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support
+    parts are listed under the drawing.">
+</picture>
+<!-- /figure -->
+
+<!-- figure: chip-outline -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/chip-outline.dark.svg">
+  <img src="diagrams/chip-outline.svg"
+    alt="Outline of the MCP9700 in SOT-23-3 drawn to scale from above: body 2.9 x 1.3 x 1.12 mm, 3 pins.">
+</picture>
+<!-- /figure -->
+
+The pin tables, the full schematic and the timing are on [Hardware](hardware.md).
+
+## Driver coverage
+
+<!-- generated: chip-coverage -->
+| Capability | What the chip does | Driver API | Registers | Status | Datasheet |
+| --- | --- | --- | --- | --- | --- |
+| [Linear temperature output](transfer-function.md) | Turns the output voltage into milli-degrees with the datasheet's first-order equation, in integers | `ReadTemperatureMilliC`, `ReadMeasurement`, `ReadOutputMv` | - | Supported | 4.0, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Five devices | The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades | `Variant`, `GetSpec` | - | Supported | DC Electrical Characteristics, [p. 3](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=3) |
+| Temperature classes | Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused | `TemperatureClass::High`, `Error::OutputLow`, `Error::OutputHigh` | - | Supported | Temperature Characteristics, [p. 4](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=4) |
+| Direct ADC connection | VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line | `ReadVoltageMv`, `ReadRawPortMv`, `Error::Saturated`, `Error::Unstable` | - | Supported | Features, [p. 1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1) |
+| One-point calibration | Removes the sensor's offset with one reading at a known temperature, as the datasheet advises | `offset_cal_mc` | - | Supported | 4.1, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Power from an I/O pin | Switches the sensor's supply from an MCU pin to save current; 800 µs typical turn-on | `Sleep`, `GpioSet`, `CtrlPin::Enable` | - | Supported | 4.2, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
+| Nonlinearity compensation | A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result | - | - | Not covered | 4.1, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Self-heating | 0.179 °C at the worst case at 25 °C; the driver does not correct it | - | - | Not covered | 4.4, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
+
+**Supported**: the driver covers it and a host test checks it; **Not covered**: the chip has it and the driver leaves it
+alone.
+
+From [`docs/hardware.yml`](hardware.yml); `kokeb-docs hardware --check` confirms that every API name is in
+`inc/mcp9700.hpp`, `inc/mcp9700_types.hpp`, `inc/mcp9700_adc_interface.hpp`.
+<!-- /generated -->
+
 The driver has no platform code. You give it a small class that reads one ADC channel in millivolts; it does the
 rest: power-up timing, averaging, the clip, noise and range checks, and the transfer function in integers. Other
 linear active thermistor ICs with a first-order output (V = V0 + TC x T) work through an explicit `Custom` variant
 that you declare completely.
-
-<div class="kb-chip" markdown>
-<div class="kb-chip__head">
-<span class="kb-chip__kicker">Analog temperature sensor</span>
-<span class="kb-chip__name">MCP9700 / MCP9700A / MCP9700B / MCP9701 / MCP9701A</span>
-<span class="kb-chip__vendor">Microchip</span>
-</div>
-
-Measures
-:   -40 °C to +125 °C (+150 °C with the High option on the MCP9700 and MCP9700B); -10 °C to +125 °C for the
-    MCP9701 and MCP9701A
-
-Output
-:   500 mV at 0 °C and 10.0 mV/°C (MCP9701 and MCP9701A: 400 mV and 19.5 mV/°C), typical
-
-Accuracy
-:   ±4 °C (MCP9700, MCP9701), ±2 °C (A grade), ±1 °C (MCP9700B, +20 °C to +70 °C), by temperature span
-
-Supply
-:   2.3 V to 5.5 V (3.1 V to 5.5 V for the MCP9701 and MCP9701A), 6 µA typical
-
-Interface
-:   One analog output (VOUT) to an MCU ADC channel; the supply may come from an MCU pin (optional hook)
-</div>
 
 ## What you get
 
