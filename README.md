@@ -60,7 +60,8 @@ The site at <https://kokeb-labs-drivers.github.io/driver-mcp9700/> opens when th
 - Battery packs and portable equipment
 - General purpose temperature monitoring
 
-Uses named by the datasheet (Features, [p. 1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+Uses named by the datasheet (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
 <!-- /generated -->
 
 ## Inside the sensor

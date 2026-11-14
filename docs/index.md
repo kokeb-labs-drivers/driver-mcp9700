@@ -9,12 +9,6 @@ hide:
 
 # MCP970x Driver
 
-<!-- generated: chip-summary -->
-The **MCP9700** is an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with
-the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts (Features, [p.
-1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
-<!-- /generated -->
-
 <p>A C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors,
 read through any MCU's ADC, with clip, noise and range checks.</p>
 
@@ -22,6 +16,12 @@ read through any MCU's ADC, with clip, noise and range checks.</p>
 [API guide](api-guide.md){ .md-button }
 [Source on GitHub](https://github.com/kokeb-labs-drivers/driver-mcp9700){ .md-button }
 </div>
+
+<!-- generated: chip-summary -->
+The **MCP9700** is an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with
+the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+<!-- /generated -->
 
 <!-- figure: chip-hero -->
 <picture>
@@ -67,7 +67,8 @@ read through any MCU's ADC, with clip, noise and range checks.</p>
 - Battery packs and portable equipment
 - General purpose temperature monitoring
 
-Uses named by the datasheet (Features, [p. 1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+Uses named by the datasheet (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
 <!-- /generated -->
 
 ## Inside the sensor
@@ -120,6 +121,32 @@ Uses named by the datasheet (Features, [p. 1](https://ww1.microchip.com/download
 <!-- /figure -->
 
 The pin tables, the full schematic and the timing are on [Hardware](hardware.md).
+
+## Quick start
+
+Wire the chip as above, write the port for your MCU ([Porting](porting.md)), then:
+
+<!-- generated: quickstart-code -->
+```cpp
+#include "mcp9700.hpp"
+
+int read_board_temperature(MyPort& port, int32_t& milli_celsius) {
+  mcp9700::MCP9700<MyPort> sensor(port); // no I/O yet: an MCP9700 on a 12 bit, 3.3 V ADC
+
+  if (auto r = sensor.EnsureInitialized(); !r) { // 1. ADC up, settle, one validated reading
+    return static_cast<int>(r.error);            //    DeviceIdMismatch: wrong channel or no sensor
+  }
+  const auto t = sensor.ReadTemperatureMilliC(); // 2. discard 1, average 8, check, convert
+  if (!t) {
+    return static_cast<int>(t.error); //    OutputLow, OutputHigh, Saturated, Unstable or Bus
+  }
+  milli_celsius = t.value; // 3. 25000 is 25.000 C
+  return 0;
+}
+```
+<!-- /generated -->
+
+Every step, with the port and what to check when it does not work: [Quickstart](quickstart.md).
 
 ## Driver coverage
 
