@@ -3,14 +3,12 @@
 # (tools/scaffold.py --check-drift, CI: kokeb-labs/ci-tools ru-template-drift) scaffolds the template again
 # with these arguments and compares the files it manages. List a file under `local` only when it differs on
 # purpose, with the reason.
-template: 09edbd7e6b30443a17668cab001e86f3640678b5
+template: 96c6ce33952f0e4e44ff386d6c0bd8bd5760e96d
 kind: "driver"
 name: "mcp9700"
 bus: "adc"
 namespace: "mcp9700"
-description: >-
-  C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature
-  sensors, read through your ADC, with clip, noise and range checks.
+description: "C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors, read through your ADC, with clip, noise and range checks."
 include_root: null
 org: "kokeb-labs-drivers"
 repo: "driver-mcp9700"
