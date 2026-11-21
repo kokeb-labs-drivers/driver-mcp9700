@@ -32,7 +32,7 @@ the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads 
     input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature.
     Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C
     (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High
-    option); ±1 to ±4 °C accuracy, by grade; 6 µA typical supply current.">
+    option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.">
 </picture>
 <!-- /figure -->
 

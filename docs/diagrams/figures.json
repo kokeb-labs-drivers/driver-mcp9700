@@ -53,7 +53,7 @@
   },
   "chip-hero": {
     "title": "MCP9700",
-    "alt": "Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy, by grade; 6 µA typical supply current.",
+    "alt": "Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.",
     "description": "The MCP9700 in the middle, drawn as its SOT-23-3 package. On the left the MCU that runs the driver, joined to it by ADC input. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.",
     "profile": "overview",
     "width": 1200,
@@ -127,6 +127,23 @@
       "inc/mcp9700.hpp:public calls",
       "inc/mcp9700_adc_interface.hpp:AdcInterface"
     ]
+  },
+  "power-on-timing": {
+    "title": "Power-on settling",
+    "alt": "Power-on of an MCP9700 supplied from an MCU pin: VDD rises, VOUT is undefined for the turn-on time, then follows the transfer function and the ADC may sample it.",
+    "description": "The two lanes are VDD and VOUT, left to right in time. The MCU pin raises VDD; VOUT is not yet valid during the turn-on time, after which it carries the temperature as V0 plus TC times the ambient temperature. The table gives the turn-on time, which the datasheet states as a typical value only.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/power-on-timing.timing.yml",
+    "sources": [
+      "docs/model/power-on-timing.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": true,
+    "font": ""
   },
   "read-pipeline": {
     "title": "One reading, step by step",

@@ -80,7 +80,7 @@ The reading is the sensor's error plus the ADC's, and the driver reports the sum
 
 | Source | Size | Where it is described |
 | --- | --- | --- |
-| Sensor accuracy | ±1 °C to ±4 °C by grade and span, at VDD = 3.3 V (MCP9700 family) or 5.0 V (MCP9701 family) | [Hardware](hardware.md#accuracy), `AccuracyLimitsFor()` |
+| Sensor accuracy | ±1 °C to ±4 °C by grade up to +70 °C, -4 °C to +6 °C at worst over the full range, at VDD = 3.3 V (MCP9700 family) or 5.0 V (MCP9701 family) | [Hardware](hardware.md#accuracy), `AccuracyLimitsFor()` |
 | Nonlinearity | ±0.5 °C typical, 0 to +70 °C | not corrected; [Limitations](limitations.md) |
 | Line regulation | 0.1 °C per volt away from the tested supply | not corrected; [Limitations](limitations.md) |
 | Self-heating | 0.179 °C at the worst case, 25 °C | not corrected |

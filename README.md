@@ -25,7 +25,7 @@ The site at <https://kokeb-labs-drivers.github.io/driver-mcp9700/> opens when th
     input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature.
     Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C
     (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High
-    option); ±1 to ±4 °C accuracy, by grade; 6 µA typical supply current.">
+    option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.">
 </picture>
 <!-- /figure -->
 
@@ -212,7 +212,7 @@ IC with a positive slope works through an explicit `Custom` variant that you dec
 | --- | --- |
 | **Chips** | Microchip MCP9700, MCP9700A, MCP9700B, MCP9701, MCP9701A (the whole family, one table row each), SOT-23-3, SC70-5, TO-92-3 |
 | **Measures** | -40 °C to +125 °C (+150 °C with the High option), -10 °C to +125 °C for the MCP9701 family |
-| **Output** | 500 mV at 0 °C and 10.0 mV/°C (MCP9701: 400 mV and 19.5 mV/°C), typical; accuracy ±1 °C to ±4 °C by grade |
+| **Output** | 500 mV at 0 °C and 10.0 mV/°C (MCP9701: 400 mV and 19.5 mV/°C), typical; accuracy ±1 °C to ±4 °C by grade up to +70 °C, -4 °C to +6 °C at worst over the full range |
 | **Bus** | None: one analog output to an MCU ADC channel, read in millivolts by your port |
 | **Also drives** | The sensor's supply from an MCU pin, when your port has `GpioSet()` (`Sleep()`) |
 | **Checks** | Clipped ADC (`Saturated`), noisy line (`Unstable`), output outside the range (`OutputLow`, `OutputHigh`) |

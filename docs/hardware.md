@@ -217,7 +217,7 @@ setup, so a clip is always a fault (an open input, a wrong attenuation or a mis-
 | 16 bit | 3300 mV | 0.05 mV | 6 m°C | |
 
 `ResolutionMilliC()` returns the step for your configuration, rounded up. Averaging eight conversions lowers the
-noise but not the step; the sensor's own accuracy (±1 °C to ±4 °C) is larger than any step above 10 bits.
+noise but not the step; the sensor's own accuracy (±1 °C to ±4 °C up to +70 °C, by grade) is larger than any step above 10 bits.
 
 The ADC's input must not draw more than 100 µA on average, including the charge of its sample-and-hold, and
 VOUT should see no more than 1000 pF. If your ADC is a multiplexed one, its sample capacitor holds the previous

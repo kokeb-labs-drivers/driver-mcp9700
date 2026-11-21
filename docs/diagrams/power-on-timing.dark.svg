@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="591" viewBox="0 0 640 591" role="img" aria-labelledby="power-on-timing-title power-on-timing-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="power-on-timing-title">Power-on settling</title>
+<desc id="power-on-timing-desc">Power-on of an MCP9700 supplied from an MCU pin: VDD rises, VOUT is undefined for the turn-on time, then follows the transfer function and the ADC may sample it.</desc>
+<defs><marker id="power-on-timing-arrow-ink2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#D2DAE4"/></marker></defs>
+<rect x="0.5" y="0.5" width="639" height="590" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44.4" font-size="13" font-weight="700" letter-spacing="1.2" fill="#F8D27A">SIGNAL TIMING</text>
+<text x="32" y="76.2" font-size="24" font-weight="700" fill="#E8EDF3">Power-on settling</text>
+<text x="32" y="102.7" font-size="15" fill="#9AA6B5">Datasheet: DC Electrical Characteristics (t_ON), p. 4; 4.2 Shutdown Using</text>
+<text x="32" y="124.5" font-size="15" fill="#9AA6B5">Microcontroller I/O Pin, p. 11.</text>
+<rect x="32" y="140.4" width="576" height="1" fill="#252F3C"/>
+<path d="M130.8 266.6 L130.8 318.8" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M259.3 266.6 L259.3 318.8" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M88 200.6 L88 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M130.8 200.6 L130.8 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M173.7 200.6 L173.7 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M216.5 200.6 L216.5 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M259.3 200.6 L259.3 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M302.2 200.6 L302.2 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M345 200.6 L345 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M387.8 200.6 L387.8 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M430.7 200.6 L430.7 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M473.5 200.6 L473.5 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M516.3 200.6 L516.3 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M559.2 200.6 L559.2 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M602 200.6 L602 318.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M32 364.9 L608 364.9" fill="none" stroke="#252F3C" stroke-width="1"/>
+<path d="M32 437.8 L608 437.8" fill="none" stroke="#252F3C" stroke-width="1"/>
+<rect x="130.8" y="253.6" width="128.5" height="26" rx="0" fill="#18202B"/>
+<path d="M260.3 191.6 L260.3 186.6 L601 186.6 L601 191.6" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<path d="M88 231.6 L130.8 231.6 L130.8 231.6 L130.8 205.6 L602 205.6" fill="none" stroke="#D2DAE4" stroke-width="2"/>
+<path d="M88 279.6 L130.8 279.6" fill="none" stroke="#D2DAE4" stroke-width="2"/>
+<path d="M130.8 279.6 L130.8 266.6" fill="none" stroke="#D2DAE4" stroke-width="2"/>
+<path d="M130.8 260.6 L137.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M130.8 267.6 L144.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M130.8 274.6 L151.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M132.8 279.6 L158.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M139.8 279.6 L165.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M146.8 279.6 L172.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M153.8 279.6 L179.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M160.8 279.6 L186.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M167.8 279.6 L193.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M174.8 279.6 L200.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M181.8 279.6 L207.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M188.8 279.6 L214.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M195.8 279.6 L221.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M202.8 279.6 L228.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M209.8 279.6 L235.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M216.8 279.6 L242.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M223.8 279.6 L249.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M230.8 279.6 L256.8 253.6" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M237.8 279.6 L259.3 258.1" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M244.8 279.6 L259.3 265.1" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M251.8 279.6 L259.3 272.1" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M258.8 279.6 L259.3 279.1" fill="none" stroke="#6C7889" stroke-width="1"/>
+<path d="M130.8 253.6 L259.3 253.6" fill="none" stroke="#D2DAE4" stroke-width="1.6"/>
+<path d="M130.8 279.6 L259.3 279.6" fill="none" stroke="#D2DAE4" stroke-width="1.6"/>
+<path d="M131.8 314.8 L258.3 314.8" fill="none" stroke="#D2DAE4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#power-on-timing-arrow-ink2)" marker-start="url(#power-on-timing-arrow-ink2)"/>
+<path d="M259.3 266.6 L264.3 253.6 L597 253.6 L602 266.6 L597 279.6 L264.3 279.6 Z" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="32" y="451.8" width="576" height="108.6" rx="10" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="430.7" y="175.8" font-size="14" font-weight="600" text-anchor="middle" fill="#E2E8F0">ADC may sample</text>
+<text x="32" y="224.1" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VDD</text>
+<text x="32" y="272.1" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VOUT</text>
+<text x="430.7" y="271.7" font-size="14" font-weight="600" text-anchor="middle" fill="#A7F3E6">VOUT = TC x TA + V0</text>
+<text x="195.1" y="301.9" font-size="14" font-weight="700" text-anchor="middle" fill="#E8EDF3">tON</text>
+<text x="32" y="349.3" font-size="17" font-weight="700" fill="#E8EDF3">Timing values</text>
+<text x="32" y="385.7" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">tON</text>
+<text x="608" y="385.7" font-size="15" font-weight="700" text-anchor="end" fill="#E8EDF3">typ 800 µs</text>
+<text x="32" y="405.9" font-size="15" fill="#D2DAE4">Turn-on time (typical; the datasheet gives no maximum)</text>
+<text x="32" y="426.1" font-size="14" fill="#9AA6B5">Datasheet DC Electrical Characteristics (t_ON), p. 4</text>
+<text x="46" y="480.2" font-size="17" font-weight="700" fill="#E2E8F0">Notes</text>
+<text x="46" y="500.7" font-size="15" fill="#E2E8F0">An MCU I/O pin may supply the sensor; filter its switching noise with a</text>
+<text x="46" y="522.4" font-size="15" fill="#E2E8F0">series resistor and a decoupling capacitor. The driver waits</text>
+<text x="46" y="544.2" font-size="15" fill="#E2E8F0">Config::power_on_settle_us, a multiple of the typical turn-on time.</text>
+</svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="768" viewBox="0 0 1200 768" role="img" aria-labelledby="chip-hero-title chip-hero-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
 <title id="chip-hero-title">MCP9700</title>
-<desc id="chip-hero-desc">Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy, by grade; 6 µA typical supply current.</desc>
+<desc id="chip-hero-desc">Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.</desc>
 <defs><marker id="fk-arrow-amber-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C26A05"/></marker><marker id="fk-arrow-blue-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2563EB"/></marker></defs>
 <rect x="0.5" y="0.5" width="1199" height="767" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
 <text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#7A360E">ANALOG TEMPERATURE SENSOR</text>
@@ -49,7 +49,8 @@
 <text x="508.8" y="683.9" font-size="17" fill="#2B3442">High option)</text>
 <text x="508.8" y="719.2" font-size="16" fill="#566070">Features, p. 1</text>
 <text x="739.2" y="608.4" font-size="30" font-weight="700" fill="#0E1726">±1 to ±4 °C</text>
-<text x="739.2" y="638" font-size="17" fill="#2B3442">accuracy, by grade</text>
+<text x="739.2" y="638" font-size="17" fill="#2B3442">accuracy by grade,</text>
+<text x="739.2" y="661" font-size="17" fill="#2B3442">up to +70 °C</text>
 <text x="739.2" y="719.2" font-size="16" fill="#566070">Features, p. 1</text>
 <text x="969.6" y="608.4" font-size="30" font-weight="700" fill="#0E1726">6 µA</text>
 <text x="969.6" y="638" font-size="17" fill="#2B3442">typical supply</text>
