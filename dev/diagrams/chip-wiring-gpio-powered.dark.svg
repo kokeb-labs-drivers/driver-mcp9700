@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="732" viewBox="0 0 1200 732" role="img" aria-labelledby="chip-wiring-gpio-powered-title chip-wiring-gpio-powered-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-wiring-gpio-powered-title">Wiring: Powered from an I/O pin</title>
+<desc id="chip-wiring-gpio-powered-desc">Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support parts are listed under the drawing.</desc>
+<rect x="0.5" y="0.5" width="1199" height="731" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#F8D27A">PINS AND WIRING</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#E8EDF3">Wiring: Powered from an I/O pin</text>
+<text x="32" y="115.4" font-size="18" fill="#9AA6B5">What you connect by hand, with the driver hook on each MCU wire. The full schematic, with every part and value, is on the</text>
+<text x="32" y="141.5" font-size="18" fill="#9AA6B5">Hardware page. Datasheet: 4.2 Shutdown Using Microcontroller I/O Pin, p. 11.</text>
+<rect x="32" y="157.5" width="1136" height="1" fill="#252F3C"/>
+<path d="M437.9 291.1 L708.1 291.1" fill="none" stroke="#F0ABFC" stroke-width="2.2"/>
+<path d="M437.9 398.3 L708.1 398.3" fill="none" stroke="#FB7185" stroke-width="2.2"/>
+<rect x="722.1" y="175.5" width="240" height="294.4" rx="10" fill="#18202B" stroke="#D2DAE4" stroke-width="2.2"/>
+<rect x="237.9" y="175.5" width="200" height="294.4" rx="12" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="32" y="497.9" width="1136" height="79" rx="12" fill="#321820" stroke="#6E3141" stroke-width="1"/>
+<rect x="32" y="590.9" width="1136" height="79" rx="12" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="842.1" y="210.5" font-size="20" font-weight="700" text-anchor="middle" fill="#E8EDF3">MCP9700</text>
+<text x="842.1" y="232.9" font-size="16" text-anchor="middle" fill="#9AA6B5">U1</text>
+<text x="255.9" y="210.5" font-size="20" font-weight="700" fill="#BFDBFE">MCU</text>
+<text x="255.9" y="232.9" font-size="16" fill="#BFDBFE">U2</text>
+<text x="419.9" y="296.9" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#BFDBFE">ADC input</text>
+<text x="744.1" y="296.9" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VOUT</text>
+<rect x="708.1" y="285.1" width="14" height="12" rx="2" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<text x="573" y="281.1" font-size="16" font-weight="600" text-anchor="middle" fill="#D2DAE4">VOUT  pin 2</text>
+<text x="573" y="313.9" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#9AA6B5">ReadVoltageMv()</text>
+<text x="419.9" y="404.1" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#BFDBFE">GPIO (enable)</text>
+<text x="744.1" y="404.1" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#E8EDF3">VDD</text>
+<rect x="708.1" y="392.3" width="14" height="12" rx="2" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="573" y="388.3" font-size="16" font-weight="600" text-anchor="middle" fill="#D2DAE4">VDD  pin 1</text>
+<text x="573" y="421.1" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#9AA6B5">GpioSet(CtrlPin::Enable)</text>
+<text x="573" y="442.7" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#9AA6B5">through R1 200 Ω</text>
+<text x="573" y="464.3" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#9AA6B5">+ C1 1 µF</text>
+<text x="50" y="532.9" font-size="20" font-weight="700" fill="#FECDD3">Supplies and ground</text>
+<text x="50" y="556.3" font-size="17" fill="#FECDD3">GND: GND; also U2.GND</text>
+<text x="50" y="625.9" font-size="20" font-weight="700" fill="#E2E8F0">Also on the board</text>
+<text x="50" y="649.3" font-size="17" fill="#E2E8F0">Support parts: 1 capacitor, 1 resistor around the supplies (values in the full schematic).</text>
+<rect x="32" y="682.3" width="14" height="14" rx="4" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="54" y="696.9" font-size="16" fill="#9AA6B5">power</text>
+<rect x="128.7" y="682.3" width="14" height="14" rx="4" fill="#2E1533" stroke="#F0ABFC" stroke-width="1.4"/>
+<text x="150.7" y="696.9" font-size="16" fill="#9AA6B5">analog</text>
+</svg>

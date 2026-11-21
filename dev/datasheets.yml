@@ -76,7 +76,7 @@ topics:
     section: "DC Electrical Characteristics (t_ON)"
     page: 4
     driver: "`Config::power_on_settle_us`, `kPowerOnTypicalUs`"
-    docs: [hardware, configuration]
+    docs: [hardware, configuration, bus]
   - topic: "Specified temperature ranges"
     doc: ds
     section: "Temperature Characteristics"
@@ -100,7 +100,7 @@ topics:
     section: "4.2 Shutdown Using Microcontroller I/O Pin"
     page: 11
     driver: "`CtrlPin::Enable`, `Sleep()`, `EnsureInitialized()`"
-    docs: [porting, hardware, api-guide]
+    docs: [porting, hardware, api-guide, bus]
   - topic: "Layout and decoupling"
     doc: ds
     section: "4.3 Layout Considerations"

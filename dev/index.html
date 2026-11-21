@@ -100,72 +100,6 @@
   <meta property="og:description" content="C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors, read through your ADC, with clip, noise and range checks.">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-mcp9700/latest/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -537,6 +471,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the sensor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-get" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -574,6 +574,8 @@
   
     
     
+      
+        
       
         
       
@@ -855,6 +857,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the sensor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-get" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -912,30 +980,213 @@ read through any MCU's ADC, with clip, noise and range checks.</p>
 <a class="md-button" href="api-guide/">API guide</a>
 <a class="md-button" href="https://github.com/kokeb-labs-drivers/driver-mcp9700">Source on GitHub</a></p>
 </div>
+<!-- generated: chip-summary -->
+<p>The <strong>MCP9700</strong> is an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with
+the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts (Features, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1">p.
+1</a>).</p>
+<!-- /generated -->
+
+<figure class="kb-figure">
+<img src="diagrams/chip-hero.svg#only-light" alt="Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current." width="1200" height="768"><img src="diagrams/chip-hero.dark.svg#only-dark" alt="Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current." width="1200" height="768">
+<figcaption>MCP9700</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCP9700 in the middle, drawn as its SOT-23-3 package. On the left the MCU that runs the driver, joined to it by ADC input. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<h2 id="what-it-does">What it does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-capabilities.svg#only-light" alt="Capability map of the MCP9700: Linear temperature output (supported): Turns the output voltage into milli-degrees with the datasheet&#x27;s first-order equation, in integers; Five devices (supported): The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades; Temperature classes (supported): Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused; Direct ADC connection (supported): VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line; One-point calibration (supported): Removes the sensor&#x27;s offset with one reading at a known temperature, as the datasheet advises; Power from an I/O pin (supported): Switches the sensor&#x27;s supply from an MCU pin to save current; 800 µs typical turn-on; Nonlinearity compensation (not covered): A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result; Self-heating (not covered): 0.179 °C at the worst case at 25 °C; the driver does not correct it." width="1200" height="900" loading="lazy"><img src="diagrams/chip-capabilities.dark.svg#only-dark" alt="Capability map of the MCP9700: Linear temperature output (supported): Turns the output voltage into milli-degrees with the datasheet&#x27;s first-order equation, in integers; Five devices (supported): The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades; Temperature classes (supported): Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused; Direct ADC connection (supported): VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line; One-point calibration (supported): Removes the sensor&#x27;s offset with one reading at a known temperature, as the datasheet advises; Power from an I/O pin (supported): Switches the sensor&#x27;s supply from an MCU pin to save current; 800 µs typical turn-on; Nonlinearity compensation (not covered): A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result; Self-heating (not covered): 0.179 °C at the worst case at 25 °C; the driver does not correct it." width="1200" height="900" loading="lazy">
+<figcaption>What the MCP9700 does</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>Each card is one function of the MCP9700: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<h2 id="where-it-is-used">Where it is used<a class="headerlink" href="#where-it-is-used" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-uses -->
+<ul>
+<li>Automotive</li>
+<li>Hard disk drives and other PC peripherals</li>
+<li>Entertainment systems</li>
+<li>Home appliance</li>
+<li>Office equipment</li>
+<li>Battery packs and portable equipment</li>
+<li>General purpose temperature monitoring</li>
+</ul>
+<p>Uses named by the datasheet (Features, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1">p.
+1</a>).</p>
+<!-- /generated -->
+
+<h2 id="inside-the-sensor">Inside the sensor<a class="headerlink" href="#inside-the-sensor" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-blocks.svg#only-light" alt="Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach each block." width="1200" height="553" loading="lazy"><img src="diagrams/chip-blocks.dark.svg#only-dark" alt="Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach each block." width="1200" height="553" loading="lazy">
+<figcaption>Inside the MCP9700</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCP9700's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<h2 id="pins-and-wiring">Pins and wiring<a class="headerlink" href="#pins-and-wiring" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-pinout.svg#only-light" alt="Pinout of the MCP9700 in SOT-23-3, top view: 3 pins, each with its name, its electrical type as a colour and the driver hook that uses it." width="954" height="1062" loading="lazy"><img src="diagrams/chip-pinout.dark.svg#only-dark" alt="Pinout of the MCP9700 in SOT-23-3, top view: 3 pins, each with its name, its electrical type as a colour and the driver hook that uses it." width="954" height="1062" loading="lazy">
+<figcaption>MCP9700 pinout, SOT-23-3</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCP9700 seen from the top, in its SOT-23-3 package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-wiring-typical.svg#only-light" alt="Wiring of the MCP9700 for the Typical application: MCU ADC input to VOUT (ReadVoltageMv()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="582" loading="lazy"><img src="diagrams/chip-wiring-typical.dark.svg#only-dark" alt="Wiring of the MCP9700 for the Typical application: MCU ADC input to VOUT (ReadVoltageMv()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="582" loading="lazy">
+<figcaption>Wiring: Typical application</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCU on the left, the MCP9700 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-wiring-gpio-powered.svg#only-light" alt="Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="732" loading="lazy"><img src="diagrams/chip-wiring-gpio-powered.dark.svg#only-dark" alt="Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="732" loading="lazy">
+<figcaption>Wiring: Powered from an I/O pin</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCU on the left, the MCP9700 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-outline.svg#only-light" alt="Outline of the MCP9700 in SOT-23-3 drawn to scale from above: body 2.9 x 1.3 x 1.12 mm, 3 pins." width="760" height="952" loading="lazy"><img src="diagrams/chip-outline.dark.svg#only-dark" alt="Outline of the MCP9700 in SOT-23-3 drawn to scale from above: body 2.9 x 1.3 x 1.12 mm, 3 pins." width="760" height="952" loading="lazy">
+<figcaption>MCP9700 package, SOT-23-3</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCP9700 package seen from the top and, when the height is known, from the side, drawn to scale: 2.9 x 1.3 x 1.12 mm. The arrows carry the datasheet's dimensions, the dot marks pin 1 and the pads are numbered counter-clockwise from it, coloured by the pin's electrical type (legend below). Pads sit centred on each side, evenly spaced; the datasheet's land pattern is the reference for a board.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700.hpp"><code>inc/mcp9700.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>.</p>
+</details>
+<p>The pin tables, the full schematic and the timing are on <a href="hardware/">Hardware</a>.</p>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Wire the chip as above, write the port for your MCU (<a href="porting/">Porting</a>), then:</p>
+<!-- generated: quickstart-code -->
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"mcp9700.hpp"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">read_board_temperature</span><span class="p">(</span><span class="n">MyPort</span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">milli_celsius</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">mcp9700</span><span class="o">::</span><span class="n">MCP9700</span><span class="o">&lt;</span><span class="n">MyPort</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sensor</span><span class="p">(</span><span class="n">port</span><span class="p">);</span><span class="w"> </span><span class="c1">// no I/O yet: an MCP9700 on a 12 bit, 3.3 V ADC</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span><span class="w"> </span><span class="o">!</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 1. ADC up, settle, one validated reading</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">error</span><span class="p">);</span><span class="w">            </span><span class="c1">//    DeviceIdMismatch: wrong channel or no sensor</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">ReadTemperatureMilliC</span><span class="p">();</span><span class="w"> </span><span class="c1">// 2. discard 1, average 8, check, convert</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">error</span><span class="p">);</span><span class="w"> </span><span class="c1">//    OutputLow, OutputHigh, Saturated, Unstable or Bus</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="n">milli_celsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// 3. 25000 is 25.000 C</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<!-- /generated -->
+
+<p>Every step, with the port and what to check when it does not work: <a href="quickstart/">Quickstart</a>.</p>
+<h2 id="driver-coverage">Driver coverage<a class="headerlink" href="#driver-coverage" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-coverage -->
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What the chip does</th>
+<th>Driver API</th>
+<th>Registers</th>
+<th>Status</th>
+<th>Datasheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="transfer-function/">Linear temperature output</a></td>
+<td>Turns the output voltage into milli-degrees with the datasheet's first-order equation, in integers</td>
+<td><code>ReadTemperatureMilliC</code>, <code>ReadMeasurement</code>, <code>ReadOutputMv</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>4.0, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10">p. 10</a></td>
+</tr>
+<tr>
+<td>Five devices</td>
+<td>The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades</td>
+<td><code>Variant</code>, <code>GetSpec</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>DC Electrical Characteristics, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=3">p. 3</a></td>
+</tr>
+<tr>
+<td>Temperature classes</td>
+<td>Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused</td>
+<td><code>TemperatureClass::High</code>, <code>Error::OutputLow</code>, <code>Error::OutputHigh</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Temperature Characteristics, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=4">p. 4</a></td>
+</tr>
+<tr>
+<td>Direct ADC connection</td>
+<td>VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line</td>
+<td><code>ReadVoltageMv</code>, <code>ReadRawPortMv</code>, <code>Error::Saturated</code>, <code>Error::Unstable</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Features, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1">p. 1</a></td>
+</tr>
+<tr>
+<td>One-point calibration</td>
+<td>Removes the sensor's offset with one reading at a known temperature, as the datasheet advises</td>
+<td><code>offset_cal_mc</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>4.1, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10">p. 10</a></td>
+</tr>
+<tr>
+<td>Power from an I/O pin</td>
+<td>Switches the sensor's supply from an MCU pin to save current; 800 µs typical turn-on</td>
+<td><code>Sleep</code>, <code>GpioSet</code>, <code>CtrlPin::Enable</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>4.2, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11">p. 11</a></td>
+</tr>
+<tr>
+<td>Nonlinearity compensation</td>
+<td>A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result</td>
+<td>-</td>
+<td>-</td>
+<td>Not covered</td>
+<td>4.1, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10">p. 10</a></td>
+</tr>
+<tr>
+<td>Self-heating</td>
+<td>0.179 °C at the worst case at 25 °C; the driver does not correct it</td>
+<td>-</td>
+<td>-</td>
+<td>Not covered</td>
+<td>4.4, <a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11">p. 11</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supported</strong>: the driver covers it and a host test checks it; <strong>Not covered</strong>: the chip has it and the driver leaves it
+alone.</p>
+<p>From <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <code>kokeb-docs hardware --check</code> confirms that every API name is in
+<code>inc/mcp9700.hpp</code>, <code>inc/mcp9700_types.hpp</code>, <code>inc/mcp9700_adc_interface.hpp</code>.</p>
+<!-- /generated -->
+
 <p>The driver has no platform code. You give it a small class that reads one ADC channel in millivolts; it does the
 rest: power-up timing, averaging, the clip, noise and range checks, and the transfer function in integers. Other
 linear active thermistor ICs with a first-order output (V = V0 + TC x T) work through an explicit <code>Custom</code> variant
 that you declare completely.</p>
-<div class="kb-chip">
-<div class="kb-chip__head">
-<span class="kb-chip__kicker">Analog temperature sensor</span>
-<span class="kb-chip__name">MCP9700 / MCP9700A / MCP9700B / MCP9701 / MCP9701A</span>
-<span class="kb-chip__vendor">Microchip</span>
-</div>
-<dl>
-<dt>Measures</dt>
-<dd>-40 °C to +125 °C (+150 °C with the High option on the MCP9700 and MCP9700B); -10 °C to +125 °C for the
-MCP9701 and MCP9701A</dd>
-<dt>Output</dt>
-<dd>500 mV at 0 °C and 10.0 mV/°C (MCP9701 and MCP9701A: 400 mV and 19.5 mV/°C), typical</dd>
-<dt>Accuracy</dt>
-<dd>±4 °C (MCP9700, MCP9701), ±2 °C (A grade), ±1 °C (MCP9700B, +20 °C to +70 °C), by temperature span</dd>
-<dt>Supply</dt>
-<dd>2.3 V to 5.5 V (3.1 V to 5.5 V for the MCP9701 and MCP9701A), 6 µA typical</dd>
-<dt>Interface</dt>
-<dd>One analog output (VOUT) to an MCU ADC channel; the supply may come from an MCU pin (optional hook)</dd>
-</dl>
-</div>
 <h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>One object per sensor</strong>, no I/O until <code>EnsureInitialized()</code>. See <a href="api-guide/">API guide</a>.</li>

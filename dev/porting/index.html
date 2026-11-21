@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors, read through your ADC, with clip, noise and range checks.">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-mcp9700/latest/porting/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -505,6 +439,8 @@
   
     
     
+      
+        
       
         
       
@@ -1185,7 +1121,7 @@ the driver does everything else.</p>
 <!-- /generated -->
 
 <p>The driver calls hooks on a class you derive from <code>mcp9700::AdcInterface&lt;Self&gt;</code> (in
-<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f12f43b019619bcf9dae196e32116d9335757d67/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>). The base declares no hook; the driver template
+<a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/inc/mcp9700_adc_interface.hpp"><code>inc/mcp9700_adc_interface.hpp</code></a>). The base declares no hook; the driver template
 is constrained by the <code>mcp9700::AdcPort</code> concept, so a missing or misdeclared hook is a compile error.</p>
 <h2 id="what-you-implement">What you implement<a class="headerlink" href="#what-you-implement" title="Permanent link">&para;</a></h2>
 <table>
@@ -1367,11 +1303,11 @@ the driver gains <code>Sleep()</code>, and a failed start-up switches the sensor
 <tbody>
 <tr>
 <td>ESP-IDF: <code>adc_oneshot</code> with curve-fitting calibration, an optional enable GPIO, <code>esp_rom_delay_us</code></td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f12f43b019619bcf9dae196e32116d9335757d67/examples/esp32/main/esp32_mcp9700_port.hpp"><code>esp32_mcp9700_port.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/examples/esp32/main/esp32_mcp9700_port.hpp"><code>esp32_mcp9700_port.hpp</code></a></td>
 </tr>
 <tr>
 <td>Host: the simulated sensor and ADC</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/f12f43b019619bcf9dae196e32116d9335757d67/examples/host/host_mcp9700_port.hpp"><code>host_mcp9700_port.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-mcp9700/blob/5afe60c3af2399f0e0a2c2ebb9442d141e80aa51/examples/host/host_mcp9700_port.hpp"><code>host_mcp9700_port.hpp</code></a></td>
 </tr>
 </tbody>
 </table>

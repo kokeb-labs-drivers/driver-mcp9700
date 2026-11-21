@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors, read through your ADC, with clip, noise and range checks.">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-mcp9700/latest/datasheet/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -505,6 +439,8 @@
   
     
     
+      
+        
       
         
       
@@ -1124,7 +1060,7 @@ are the datasheet's own (the printed page numbers).</p>
 <td>DC Electrical Characteristics (t_ON)</td>
 <td><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=4">p. 4</a></td>
 <td><code>Config::power_on_settle_us</code>, <code>kPowerOnTypicalUs</code></td>
-<td><a href="../hardware/">Hardware</a>, <a href="../configuration/">Configuration</a></td>
+<td><a href="../hardware/">Hardware</a>, <a href="../configuration/">Configuration</a>, <a href="../bus/">On the bus</a></td>
 </tr>
 <tr>
 <td>Specified temperature ranges</td>
@@ -1166,7 +1102,7 @@ are the datasheet's own (the printed page numbers).</p>
 <td>4.2 Shutdown Using Microcontroller I/O Pin</td>
 <td><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11">p. 11</a></td>
 <td><code>CtrlPin::Enable</code>, <code>Sleep()</code>, <code>EnsureInitialized()</code></td>
-<td><a href="../porting/">Porting</a>, <a href="../hardware/">Hardware</a>, <a href="../api-guide/">API guide</a></td>
+<td><a href="../porting/">Porting</a>, <a href="../hardware/">Hardware</a>, <a href="../api-guide/">API guide</a>, <a href="../bus/">On the bus</a></td>
 </tr>
 <tr>
 <td>Layout and decoupling</td>
