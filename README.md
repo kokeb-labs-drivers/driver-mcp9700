@@ -1,5 +1,11 @@
 # MCP9700 Driver
 
+<!-- generated: chip-summary -->
+The **MCP9700** is an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with
+the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+<!-- /generated -->
+
 C++20 driver for the Microchip MCP9700, MCP9700A, MCP9700B, MCP9701 and MCP9701A analog temperature sensors, read
 through your ADC, with clip, noise and range checks.
 
@@ -10,37 +16,66 @@ through your ADC, with clip, noise and range checks.
 **Documentation: [`docs/`](docs/index.md)**, with the API reference built by Doxygen ([how](docs/api-reference.md)).
 The site at <https://kokeb-labs-drivers.github.io/driver-mcp9700/> opens when the repository is public.
 
-The MCP9700 family are analog temperature sensors: the output voltage rises with the temperature, 10 mV per degree
-from 500 mV at 0 °C (19.5 mV per degree from 400 mV for the MCP9701 and MCP9701A). This driver powers the sensor,
-checks that the channel carries a plausible, stable, unclipped voltage, averages several conversions, rejects a clipped
-ADC, a noisy line and an output outside the specified range, and turns the voltage into milli-degrees with the
-datasheet's transfer function or your one-point calibration, in integers. It runs on any MCU: you give it a small class
-that reads one ADC channel in millivolts, and it does the rest. Another linear active thermistor IC with a positive
-slope works through an explicit `Custom` variant that you declare completely.
-
-<!-- figure: driver-layers -->
+<!-- figure: chip-hero -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/driver-layers.dark.svg">
-  <img src="docs/diagrams/driver-layers.svg"
-    alt="Layer diagram: your application calls the MCP9700 core, which sends register reads and writes
-    through the ADC port contract to the port class you write, which drives the chip; the core and the
-    contract are the same on every MCU.">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-hero.dark.svg">
+  <img src="docs/diagrams/chip-hero.svg"
+    alt="Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage
+    rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC
+    input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature.
+    Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C
+    (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High
+    option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.">
 </picture>
 <!-- /figure -->
 
-## At a glance
+## What it does
 
-| | |
-| --- | --- |
-| **Chips** | Microchip MCP9700, MCP9700A, MCP9700B, MCP9701, MCP9701A (the whole family, one table row each), SOT-23-3, SC70-5, TO-92-3 |
-| **Measures** | -40 °C to +125 °C (+150 °C with the High option), -10 °C to +125 °C for the MCP9701 family |
-| **Output** | 500 mV at 0 °C and 10.0 mV/°C (MCP9701: 400 mV and 19.5 mV/°C), typical; accuracy ±1 °C to ±4 °C by grade |
-| **Bus** | None: one analog output to an MCU ADC channel, read in millivolts by your port |
-| **Also drives** | The sensor's supply from an MCU pin, when your port has `GpioSet()` (`Sleep()`) |
-| **Checks** | Clipped ADC (`Saturated`), noisy line (`Unstable`), output outside the range (`OutputLow`, `OutputHigh`) |
-| **Driver** | Header-only C++20; integers only; no heap, exceptions, RTTI or virtual calls; every call returns `Result<T>` |
-| **Runs on** | Any MCU with an ADC and a C++20 compiler; examples for ESP32 (ESP-IDF) and the host ([Platforms](docs/platforms.md)) |
-| **Status** | 0.1.0, **not verified on hardware**: host-tested against a model of the sensor and the ADC and fuzzed; the bench steps are in [Limitations](docs/limitations.md) |
+<!-- figure: chip-capabilities -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-capabilities.dark.svg">
+  <img src="docs/diagrams/chip-capabilities.svg"
+    alt="Capability map of the MCP9700: Linear temperature output (supported): Turns the output voltage into
+    milli-degrees with the datasheet's first-order equation, in integers; Five devices (supported): The
+    MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades;
+    Temperature classes (supported): Extended range, or +150 °C on the MCP9700 and MCP9700B High option;
+    a reading outside it is refused; Direct ADC connection (supported): VOUT goes straight to an ADC
+    pin; the driver averages conversions and refuses a clipped or noisy line; One-point calibration
+    (supported): Removes the sensor's offset with one reading at a known temperature, as the datasheet
+    advises; Power from an I/O pin (supported): Switches the sensor's supply from an MCU pin to save
+    current; 800 µs typical turn-on; Nonlinearity compensation (not covered): A look-up table can bring
+    the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result; Self-heating
+    (not covered): 0.179 °C at the worst case at 25 °C; the driver does not correct it.">
+</picture>
+<!-- /figure -->
+
+## Where it is used
+
+<!-- generated: chip-uses -->
+- Automotive
+- Hard disk drives and other PC peripherals
+- Entertainment systems
+- Home appliance
+- Office equipment
+- Battery packs and portable equipment
+- General purpose temperature monitoring
+
+Uses named by the datasheet (Features, [p.
+1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1)).
+<!-- /generated -->
+
+## Inside the sensor
+
+<!-- figure: chip-blocks -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-blocks.dark.svg">
+  <img src="docs/diagrams/chip-blocks.svg"
+    alt="Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach
+    each block.">
+</picture>
+<!-- /figure -->
+
+## Pins and wiring
 
 <!-- figure: chip-pinout -->
 <picture>
@@ -51,20 +86,45 @@ slope works through an explicit `Custom` variant that you declare completely.
 </picture>
 <!-- /figure -->
 
+<!-- figure: chip-wiring-typical -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-wiring-typical.dark.svg">
+  <img src="docs/diagrams/chip-wiring-typical.svg"
+    alt="Wiring of the MCP9700 for the Typical application: MCU ADC input to VOUT (ReadVoltageMv()).
+    Supplies, grounds and the support parts are listed under the drawing.">
+</picture>
+<!-- /figure -->
+
+<!-- figure: chip-wiring-gpio-powered -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-wiring-gpio-powered.dark.svg">
+  <img src="docs/diagrams/chip-wiring-gpio-powered.svg"
+    alt="Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU
+    GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support
+    parts are listed under the drawing.">
+</picture>
+<!-- /figure -->
+
+| MCU | Sensor | Notes |
+| --- | --- | --- |
+| ADC input | VOUT | The input must reach 2 V for an MCP9700, 3 V for an MCP9701; no resistor in series |
+| 3.3 V | VDD | 100 nF to GND close to the pin; an MCP9701 or MCP9701A needs 3.1 V or more |
+| GND | GND | Same ground as the ADC reference |
+
+The pins differ by package (the figure above is the SOT-23-3):
+
+| Signal | SOT-23-3 | SC70-5 | TO-92-3 (bottom view) |
+| --- | --- | --- | --- |
+| VDD | 1 | 4 | 1 |
+| VOUT | 2 | 3 | 2 |
+| GND | 3 | 2 | 3 |
+| NC | none | 1, 5 | none |
+
 <!-- figure: chip-outline -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-outline.dark.svg">
   <img src="docs/diagrams/chip-outline.svg"
     alt="Outline of the MCP9700 in SOT-23-3 drawn to scale from above: body 2.9 x 1.3 x 1.12 mm, 3 pins.">
-</picture>
-<!-- /figure -->
-
-<!-- figure: chip-blocks -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-blocks.dark.svg">
-  <img src="docs/diagrams/chip-blocks.svg"
-    alt="Block diagram of the MCP9700: its function blocks, how they connect and which package pins reach
-    each block.">
 </picture>
 <!-- /figure -->
 
@@ -88,14 +148,104 @@ Also sold as:
 From [`docs/hardware.yml`](docs/hardware.yml); pins, circuits and the block diagram: [Hardware](docs/hardware.md).
 <!-- /generated -->
 
-The pins differ by package (the figure above is the SOT-23-3):
+## Quick start
 
-| Signal | SOT-23-3 | SC70-5 | TO-92-3 (bottom view) |
-| --- | --- | --- | --- |
-| VDD | 1 | 4 | 1 |
-| VOUT | 2 | 3 | 2 |
-| GND | 3 | 2 | 3 |
-| NC | none | 1, 5 | none |
+**1. Wire it** as in [Pins and wiring](#pins-and-wiring).
+
+**2. Write the port**: a class with `EnsureInitialized()` (bring the ADC up), `ReadVoltageMv()` (one calibrated
+conversion, in millivolts) and `DelayUs()`, about 20 lines on most SDKs. [Porting](docs/porting.md) has the contract
+and a complete example.
+
+**3. Read the temperature:**
+
+<!-- generated: quickstart-code -->
+```cpp
+#include "mcp9700.hpp"
+
+int read_board_temperature(MyPort& port, int32_t& milli_celsius) {
+  mcp9700::MCP9700<MyPort> sensor(port); // no I/O yet: an MCP9700 on a 12 bit, 3.3 V ADC
+
+  if (auto r = sensor.EnsureInitialized(); !r) { // 1. ADC up, settle, one validated reading
+    return static_cast<int>(r.error);            //    DeviceIdMismatch: wrong channel or no sensor
+  }
+  const auto t = sensor.ReadTemperatureMilliC(); // 2. discard 1, average 8, check, convert
+  if (!t) {
+    return static_cast<int>(t.error); //    OutputLow, OutputHigh, Saturated, Unstable or Bus
+  }
+  milli_celsius = t.value; // 3. 25000 is 25.000 C
+  return 0;
+}
+```
+<!-- /generated -->
+
+`EnsureInitialized()` is the only call that starts the sensor. Every other call returns `Error::NotInitialized`
+until it has succeeded, and no read ever starts the sensor on its own.
+
+## Driver coverage
+
+<!-- generated: chip-coverage -->
+| Capability | What the chip does | Driver API | Registers | Status | Datasheet |
+| --- | --- | --- | --- | --- | --- |
+| [Linear temperature output](docs/transfer-function.md) | Turns the output voltage into milli-degrees with the datasheet's first-order equation, in integers | `ReadTemperatureMilliC`, `ReadMeasurement`, `ReadOutputMv` | - | Supported | 4.0, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Five devices | The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades | `Variant`, `GetSpec` | - | Supported | DC Electrical Characteristics, [p. 3](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=3) |
+| Temperature classes | Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused | `TemperatureClass::High`, `Error::OutputLow`, `Error::OutputHigh` | - | Supported | Temperature Characteristics, [p. 4](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=4) |
+| Direct ADC connection | VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line | `ReadVoltageMv`, `ReadRawPortMv`, `Error::Saturated`, `Error::Unstable` | - | Supported | Features, [p. 1](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=1) |
+| One-point calibration | Removes the sensor's offset with one reading at a known temperature, as the datasheet advises | `offset_cal_mc` | - | Supported | 4.1, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Power from an I/O pin | Switches the sensor's supply from an MCU pin to save current; 800 µs typical turn-on | `Sleep`, `GpioSet`, `CtrlPin::Enable` | - | Supported | 4.2, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
+| Nonlinearity compensation | A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result | - | - | Not covered | 4.1, [p. 10](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=10) |
+| Self-heating | 0.179 °C at the worst case at 25 °C; the driver does not correct it | - | - | Not covered | 4.4, [p. 11](https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP970X-Family-Data-Sheet-DS20001942.pdf#page=11) |
+
+**Supported**: the driver covers it and a host test checks it; **Not covered**: the chip has it and the driver leaves it
+alone.
+
+From [`docs/hardware.yml`](docs/hardware.yml); `kokeb-docs hardware --check` confirms that every API name is in
+`inc/mcp9700.hpp`, `inc/mcp9700_types.hpp`, `inc/mcp9700_adc_interface.hpp`.
+<!-- /generated -->
+
+This driver powers the sensor, checks that the channel carries a plausible, stable, unclipped voltage, averages several
+conversions, rejects a clipped ADC, a noisy line and an output outside the specified range, and turns the voltage into
+milli-degrees with the datasheet's transfer function or your one-point calibration, in integers. It runs on any MCU: you
+give it a small class that reads one ADC channel in millivolts, and it does the rest. Another linear active thermistor
+IC with a positive slope works through an explicit `Custom` variant that you declare completely.
+
+| | |
+| --- | --- |
+| **Chips** | Microchip MCP9700, MCP9700A, MCP9700B, MCP9701, MCP9701A (the whole family, one table row each), SOT-23-3, SC70-5, TO-92-3 |
+| **Measures** | -40 °C to +125 °C (+150 °C with the High option), -10 °C to +125 °C for the MCP9701 family |
+| **Output** | 500 mV at 0 °C and 10.0 mV/°C (MCP9701: 400 mV and 19.5 mV/°C), typical; accuracy ±1 °C to ±4 °C by grade up to +70 °C, -4 °C to +6 °C at worst over the full range |
+| **Bus** | None: one analog output to an MCU ADC channel, read in millivolts by your port |
+| **Also drives** | The sensor's supply from an MCU pin, when your port has `GpioSet()` (`Sleep()`) |
+| **Checks** | Clipped ADC (`Saturated`), noisy line (`Unstable`), output outside the range (`OutputLow`, `OutputHigh`) |
+| **Driver** | Header-only C++20; integers only; no heap, exceptions, RTTI or virtual calls; every call returns `Result<T>` |
+| **Runs on** | Any MCU with an ADC and a C++20 compiler; examples for ESP32 (ESP-IDF) and the host ([Platforms](docs/platforms.md)) |
+| **Status** | 0.1.0, **not verified on hardware**: host-tested against a model of the sensor and the ADC and fuzzed; the bench steps are in [Limitations](docs/limitations.md) |
+
+- Powers the sensor (when your port drives its supply), waits for it and checks that the channel carries a plausible,
+  stable, unclipped voltage. That catches a dead, grounded or rail-high line; it cannot tell a sensor from a floating
+  pin that holds a stable mid-scale level (see [Limitations](docs/limitations.md#what-it-does-not-do)).
+- Reads the temperature through your MCU's ADC: dummy conversions, then an average of several, no retries, no clamping.
+- Reports a clipped ADC, a moving line, and an output outside the specified range (the window, 8 °C wider than the
+  specified range by default) as errors, never as a temperature. A line shorted to ground is recognised only when the
+  ADC reads below the window's floor: 20 mV (MCP9700 family) or 49 mV (MCP9701 family) by default.
+- Converts in integers with the datasheet transfer function of the part you declare (five rows of one table), a
+  one-point calibration offset, or a `Custom` declaration.
+- Returns `Result<T>` with an `Error` from every call: no exceptions, no heap, no RTTI, no virtual calls.
+
+## Documentation
+
+| Page | Read it when you want to |
+| --- | --- |
+| [Quickstart](docs/quickstart.md) | Go from a bare sensor to a temperature on your MCU |
+| [Hardware](docs/hardware.md) | Wire it: the five parts, packages and pins, the output, the ADC, the accuracy and the power |
+| [Transfer function](docs/transfer-function.md) | See how a voltage becomes a temperature, and the error budget |
+| [Porting](docs/porting.md) | Write the port class for your MCU's SDK |
+| [API guide](docs/api-guide.md) | Use each call: start, read, calibrate, handle errors |
+| [Configuration](docs/configuration.md) | Choose the part, the ADC, the averaging, the calibration or a `Custom` sensor |
+| [Troubleshooting](docs/troubleshooting.md) | Find the cause of an error or a wrong reading |
+| [Limitations](docs/limitations.md) | See what it assumes where the datasheet is silent, and what is not verified |
+| [Contract](docs/contract.md) | Know exactly what the driver promises, needs and returns |
+| [Datasheet map](docs/datasheet.md) | Find the datasheet section behind each part of the driver |
+| [API reference](docs/api-reference.md) | Look up a class or member (Doxygen; built by CI and locally) |
 
 ## Datasheet
 
@@ -147,58 +297,6 @@ You need git, CMake 3.16+ and a C++20 compiler (GCC 10+, Clang 13+ or MSVC 2022)
 
 To run the whole test suite instead: `cmake -S . -B build -DMCP9700_BUILD_TESTS=ON && cmake --build build && ctest
 --test-dir build`.
-
-## Use it on your MCU
-
-**1. Wire it** ([Hardware](docs/hardware.md) has the pin numbers of all three packages):
-
-| MCU | Sensor | Notes |
-| --- | --- | --- |
-| ADC input | VOUT | The input must reach 2 V for an MCP9700, 3 V for an MCP9701; no resistor in series |
-| 3.3 V | VDD | 100 nF to GND close to the pin; an MCP9701 or MCP9701A needs 3.1 V or more |
-| GND | GND | Same ground as the ADC reference |
-
-**2. Write the port**: a class with `EnsureInitialized()` (bring the ADC up), `ReadVoltageMv()` (one calibrated
-conversion, in millivolts) and `DelayUs()`, about 20 lines on most SDKs. [Porting](docs/porting.md) has the contract
-and a complete example.
-
-**3. Read the temperature:**
-
-<!-- generated: quickstart-code -->
-```cpp
-#include "mcp9700.hpp"
-
-int read_board_temperature(MyPort& port, int32_t& milli_celsius) {
-  mcp9700::MCP9700<MyPort> sensor(port); // no I/O yet: an MCP9700 on a 12 bit, 3.3 V ADC
-
-  if (auto r = sensor.EnsureInitialized(); !r) { // 1. ADC up, settle, one validated reading
-    return static_cast<int>(r.error);            //    DeviceIdMismatch: wrong channel or no sensor
-  }
-  const auto t = sensor.ReadTemperatureMilliC(); // 2. discard 1, average 8, check, convert
-  if (!t) {
-    return static_cast<int>(t.error); //    OutputLow, OutputHigh, Saturated, Unstable or Bus
-  }
-  milli_celsius = t.value; // 3. 25000 is 25.000 C
-  return 0;
-}
-```
-<!-- /generated -->
-
-`EnsureInitialized()` is the only call that starts the sensor. Every other call returns `Error::NotInitialized`
-until it has succeeded, and no read ever starts the sensor on its own.
-
-## What it does
-
-- Powers the sensor (when your port drives its supply), waits for it and checks that the channel carries a plausible,
-  stable, unclipped voltage. That catches a dead, grounded or rail-high line; it cannot tell a sensor from a floating
-  pin that holds a stable mid-scale level (see [Limitations](docs/limitations.md#what-it-does-not-do)).
-- Reads the temperature through your MCU's ADC: dummy conversions, then an average of several, no retries, no clamping.
-- Reports a clipped ADC, a moving line, and an output outside the specified range (the window, 8 °C wider than the
-  specified range by default) as errors, never as a temperature. A line shorted to ground is recognised only when the
-  ADC reads below the window's floor: 20 mV (MCP9700 family) or 49 mV (MCP9701 family) by default.
-- Converts in integers with the datasheet transfer function of the part you declare (five rows of one table), a
-  one-point calibration offset, or a `Custom` declaration.
-- Returns `Result<T>` with an `Error` from every call: no exceptions, no heap, no RTTI, no virtual calls.
 
 ## Add it to your project
 
@@ -259,22 +357,6 @@ details.
    ```
 
 The target is `mcp9700::mcp9700` every way, so switching later changes nothing else.
-
-## Documentation
-
-| Page | Read it when you want to |
-| --- | --- |
-| [Quickstart](docs/quickstart.md) | Go from a bare sensor to a temperature on your MCU |
-| [Hardware](docs/hardware.md) | Wire it: the five parts, packages and pins, the output, the ADC, the accuracy and the power |
-| [Transfer function](docs/transfer-function.md) | See how a voltage becomes a temperature, and the error budget |
-| [Porting](docs/porting.md) | Write the port class for your MCU's SDK |
-| [API guide](docs/api-guide.md) | Use each call: start, read, calibrate, handle errors |
-| [Configuration](docs/configuration.md) | Choose the part, the ADC, the averaging, the calibration or a `Custom` sensor |
-| [Troubleshooting](docs/troubleshooting.md) | Find the cause of an error or a wrong reading |
-| [Limitations](docs/limitations.md) | See what it assumes where the datasheet is silent, and what is not verified |
-| [Contract](docs/contract.md) | Know exactly what the driver promises, needs and returns |
-| [Datasheet map](docs/datasheet.md) | Find the datasheet section behind each part of the driver |
-| [API reference](docs/api-reference.md) | Look up a class or member (Doxygen; built by CI and locally) |
 
 ## Tests and quality
 

@@ -1,0 +1,30 @@
+---
+kind: timing
+id: power-on-timing
+title: Power-on settling
+kicker: Signal timing
+alt: >-
+  Power-on of an MCP9700 supplied from an MCU pin: VDD rises, VOUT is undefined for the turn-on time, then follows
+  the transfer function and the ADC may sample it.
+reads: >-
+  The two lanes are VDD and VOUT, left to right in time. The MCU pin raises VDD; VOUT is not yet valid during the
+  turn-on time, after which it carries the temperature as V0 plus TC times the ambient temperature. The table gives
+  the turn-on time, which the datasheet states as a typical value only.
+bus: other
+refs:
+  ton: {doc: ds, section: "DC Electrical Characteristics (t_ON)", page: 4}
+  shutdown: {doc: ds, section: "4.2 Shutdown Using Microcontroller I/O Pin", page: 11}
+signals:
+  - {id: vdd, label: VDD, wave: "01.........."}
+  - {id: vout, label: VOUT, wave: "0x..=.......", data: ["VOUT = TC x TA + V0"], tone: teal}
+groups:
+  - {from: 4, to: 12, label: ADC may sample}
+params:
+  - {id: ton, symbol: tON, label: "Turn-on time (typical; the datasheet gives no maximum)", typ: 800, unit: µs,
+     ref: ton}
+marks:
+  - {param: ton, signal: vout, from: 1, to: 4}
+notes:
+  - {text: "An MCU I/O pin may supply the sensor; filter its switching noise with a series resistor and a
+       decoupling capacitor.", ref: shutdown}
+  - {text: "The driver waits Config::power_on_settle_us, a multiple of the typical turn-on time.", ref: ton}

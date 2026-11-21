@@ -12,6 +12,19 @@
       "inc/mcp9700_adc_interface.hpp"
     ]
   },
+  "chip-capabilities": {
+    "title": "What the MCP9700 does",
+    "alt": "Capability map of the MCP9700: Linear temperature output (supported): Turns the output voltage into milli-degrees with the datasheet's first-order equation, in integers; Five devices (supported): The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades; Temperature classes (supported): Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused; Direct ADC connection (supported): VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line; One-point calibration (supported): Removes the sensor's offset with one reading at a known temperature, as the datasheet advises; Power from an I/O pin (supported): Switches the sensor's supply from an MCU pin to save current; 800 µs typical turn-on; Nonlinearity compensation (not covered): A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result; Self-heating (not covered): 0.179 °C at the worst case at 25 °C; the driver does not correct it.",
+    "description": "Each card is one function of the MCP9700: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/mcp9700.hpp",
+      "inc/mcp9700_adc_interface.hpp"
+    ]
+  },
   "chip-circuit-gpio-powered": {
     "title": "MCP9700: Powered from an I/O pin",
     "alt": "Schematic of the MCP9700 powered from an i/o pin: the chip with U2 MCU, R1 resistor 200 Ω, C1 capacitor 1 µF; the MCU wires carry the port hooks GpioSet(CtrlPin::Enable), ReadVoltageMv().",
@@ -31,6 +44,19 @@
     "description": "A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.",
     "profile": "detail",
     "width": 760,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/mcp9700.hpp",
+      "inc/mcp9700_adc_interface.hpp"
+    ]
+  },
+  "chip-hero": {
+    "title": "MCP9700",
+    "alt": "Overview of the MCP9700, an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts. A MCU talks to it over ADC input; it reads back Die temperature. Headline figures: 10.0 mV/°C slope (19.5 mV/°C for the MCP9701 and MCP9701A); 500 mV output at 0 °C (400 mV for the MCP9701 and MCP9701A); -40 to +125 °C measuring range (to +150 °C with the High option); ±1 to ±4 °C accuracy by grade, up to +70 °C; 6 µA typical supply current.",
+    "description": "The MCP9700 in the middle, drawn as its SOT-23-3 package. On the left the MCU that runs the driver, joined to it by ADC input. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.",
+    "profile": "overview",
+    "width": 1200,
     "source": "docs/hardware.yml",
     "sources": [
       "docs/hardware.yml",
@@ -64,6 +90,32 @@
       "inc/mcp9700_adc_interface.hpp"
     ]
   },
+  "chip-wiring-gpio-powered": {
+    "title": "Wiring: Powered from an I/O pin",
+    "alt": "Wiring of the MCP9700 for the Powered from an I/O pin: MCU ADC input to VOUT (ReadVoltageMv()); MCU GPIO (enable) to VDD through R1 200 Ω (GpioSet(CtrlPin::Enable)). Supplies, grounds and the support parts are listed under the drawing.",
+    "description": "The MCU on the left, the MCP9700 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/mcp9700.hpp",
+      "inc/mcp9700_adc_interface.hpp"
+    ]
+  },
+  "chip-wiring-typical": {
+    "title": "Wiring: Typical application",
+    "alt": "Wiring of the MCP9700 for the Typical application: MCU ADC input to VOUT (ReadVoltageMv()). Supplies, grounds and the support parts are listed under the drawing.",
+    "description": "The MCU on the left, the MCP9700 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/mcp9700.hpp",
+      "inc/mcp9700_adc_interface.hpp"
+    ]
+  },
   "driver-layers": {
     "title": "The layers, one of them yours",
     "alt": "Layer diagram: your application calls the MCP9700 core, which sends register reads and writes through the ADC port contract to the port class you write, which drives the chip; the core and the contract are the same on every MCU.",
@@ -75,6 +127,23 @@
       "inc/mcp9700.hpp:public calls",
       "inc/mcp9700_adc_interface.hpp:AdcInterface"
     ]
+  },
+  "power-on-timing": {
+    "title": "Power-on settling",
+    "alt": "Power-on of an MCP9700 supplied from an MCU pin: VDD rises, VOUT is undefined for the turn-on time, then follows the transfer function and the ADC may sample it.",
+    "description": "The two lanes are VDD and VOUT, left to right in time. The MCU pin raises VDD; VOUT is not yet valid during the turn-on time, after which it carries the temperature as V0 plus TC times the ambient temperature. The table gives the turn-on time, which the datasheet states as a typical value only.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/power-on-timing.timing.yml",
+    "sources": [
+      "docs/model/power-on-timing.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": true,
+    "font": ""
   },
   "read-pipeline": {
     "title": "One reading, step by step",

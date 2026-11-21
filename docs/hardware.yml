@@ -12,6 +12,12 @@ schema: 1
 chip: MCP9700
 
 refs:
+  cover: {doc: ds, section: "Features", page: 1}
+  accuracy: {doc: ds, section: "DC Electrical Characteristics", page: 3}
+  scaling: {doc: ds, section: "4.0 Applications Information", page: 10}
+  temp_ranges: {doc: ds, section: "Temperature Characteristics", page: 4}
+  improving: {doc: ds, section: "4.1 Improving Accuracy", page: 10}
+  thermal: {doc: ds, section: "4.4 Thermal Considerations", page: 11}
   pinout: {doc: ds, section: "Package Types", page: 2}
   pin_table: {doc: ds, section: "3.0 Pin Descriptions, Table 3-1", page: 9}
   supply: {doc: ds, section: "DC Electrical Characteristics", page: 3}
@@ -48,6 +54,64 @@ package:
 supply:
   - {name: "VDD (MCP9700, MCP9700A, MCP9700B)", min_v: 2.3, max_v: 5.5, ref: supply}
   - {name: "VDD (MCP9701, MCP9701A)", min_v: 3.1, max_v: 5.5, ref: supply}
+
+# The chip-first README: what the sensor is and does, where it is used, how the driver covers it. `kokeb-docs figures`
+# draws chip-hero and chip-capabilities from it, `kokeb-docs gen` the README's chip-summary, chip-uses and
+# chip-coverage regions. The part has no bus, so there are no frames.
+overview:
+  summary: >-
+    an analog temperature sensor in a three-pin package: its output voltage rises in a straight line with the
+    temperature, 10.0 mV per degree from 500 mV at 0 °C, so an ADC input reads it with no other parts
+  category: Analog temperature sensor
+  ref: cover
+  applications:
+    - Automotive
+    - Hard disk drives and other PC peripherals
+    - Entertainment systems
+    - Home appliance
+    - Office equipment
+    - Battery packs and portable equipment
+    - General purpose temperature monitoring
+  specs:
+    - {value: "10.0 mV/°C", label: "slope (19.5 mV/°C for the MCP9701 and MCP9701A)", ref: scaling}
+    - {value: "500 mV", label: "output at 0 °C (400 mV for the MCP9701 and MCP9701A)", ref: scaling}
+    - {value: "-40 to +125 °C", label: "measuring range (to +150 °C with the High option)", ref: cover}
+    - {value: "±1 to ±4 °C", label: "accuracy by grade, up to +70 °C", ref: cover}
+    - {value: "6 µA", label: typical supply current, ref: cover}
+  system:
+    host: MCU
+    bus: ADC input
+    senses:
+      - {label: Die temperature, detail: "an internal diode", ref: transfer}
+
+# Headers the capability `api` and `registers` names are checked against.
+driver:
+  api: [inc/mcp9700.hpp, inc/mcp9700_types.hpp, inc/mcp9700_adc_interface.hpp]
+
+capabilities:
+  - {id: temperature, title: Linear temperature output, icon: temperature, status: supported, ref: transfer,
+     docs: transfer-function.md,
+     what: "Turns the output voltage into milli-degrees with the datasheet's first-order equation, in integers",
+     api: [ReadTemperatureMilliC, ReadMeasurement, ReadOutputMv]}
+  - {id: family, title: Five devices, icon: tag, status: supported, ref: accuracy,
+     what: "The MCP9700, 9700A, 9700B, 9701 and 9701A with their slopes, offsets, ranges and accuracy grades",
+     api: [Variant, GetSpec]}
+  - {id: high, title: Temperature classes, icon: gauge, status: supported, ref: temp_ranges,
+     what: "Extended range, or +150 °C on the MCP9700 and MCP9700B High option; a reading outside it is refused",
+     api: ["TemperatureClass::High", "Error::OutputLow", "Error::OutputHigh"]}
+  - {id: adc, title: Direct ADC connection, icon: analog, status: supported, ref: cover,
+     what: "VOUT goes straight to an ADC pin; the driver averages conversions and refuses a clipped or noisy line",
+     api: [ReadVoltageMv, ReadRawPortMv, "Error::Saturated", "Error::Unstable"]}
+  - {id: calibration, title: One-point calibration, icon: settings, status: supported, ref: improving,
+     what: "Removes the sensor's offset with one reading at a known temperature, as the datasheet advises",
+     api: [offset_cal_mc]}
+  - {id: shutdown, title: Power from an I/O pin, icon: sleep, status: supported, ref: shutdown,
+     what: "Switches the sensor's supply from an MCU pin to save current; 800 µs typical turn-on",
+     api: [Sleep, GpioSet, "CtrlPin::Enable"]}
+  - {id: nonlin, title: Nonlinearity compensation, icon: ramp, status: not-covered, ref: improving,
+     what: "A look-up table can bring the accuracy to ±0.5 °C typical; the driver leaves the ±0.5 °C curve in the result"}
+  - {id: selfheat, title: Self-heating, icon: alert, status: not-covered, ref: thermal,
+     what: "0.179 °C at the worst case at 25 °C; the driver does not correct it"}
 
 # The port hooks a pin can map to (the names the driver's port headers declare).
 hooks:
@@ -117,7 +181,7 @@ circuits:
       - {id: R1, kind: resistor, value: 200 Ω, ref: shutdown}
       - {id: C1, kind: capacitor, value: 1 µF, ref: layout}
     nets:
+      - {name: VOUT, nodes: [U1.VOUT, U2.ADC]}
       - {name: SUPPLY, nodes: [U2.EN, R1.1]}
       - {name: VDD, nodes: [R1.2, U1.VDD, C1.1]}
       - {name: GND, kind: ground, nodes: [U1.GND, C1.2, U2.GND]}
-      - {name: VOUT, nodes: [U1.VOUT, U2.ADC]}
